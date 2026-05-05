@@ -533,6 +533,22 @@
     color: var(--text-muted); margin-bottom: 0.8rem;
   }
   .insight-text { font-size: 0.87rem; line-height: 1.95; color: var(--text-mid); }
+
+  /* Scroll reveal for insight images */
+  .reveal-img {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.65s cubic-bezier(0.25,0.46,0.45,0.94),
+                transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .reveal-img.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-img.hidden {
+    opacity: 0;
+    transform: translateY(22px);
+  }
   .insight-text.placeholder {
     background: var(--surface2); border: 1px dashed var(--border-light);
     padding: 1.2rem 1.4rem; color: var(--text-muted);
@@ -912,11 +928,11 @@ function openModal(i) {
     } else {
       content = `<div class="insight-text">${ins.text}</div>`;
       if (ins.img) {
-        content += `<img src="${ins.img}" alt="${ins.label}" style="width:100%; margin-top:1.2rem; border:1px solid var(--border-light); display:block;">`;
+        content += `<img src="${ins.img}" alt="${ins.label}" class="reveal-img" style="width:100%; margin-top:1.2rem; border:1px solid var(--border-light); display:block;">`;
       }
       if (ins.imgs) {
         content += `<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:8px; margin-top:1.2rem;">` +
-          ins.imgs.map(src => `<img src="${src}" alt="" style="width:100%; border:1px solid var(--border-light); display:block;">`).join('') +
+          ins.imgs.map(src => `<img src="${src}" alt="" class="reveal-img" style="width:100%; border:1px solid var(--border-light); display:block;">`).join('') +
           `</div>`;
       }
     }
@@ -937,6 +953,8 @@ function openModal(i) {
   m.classList.add('open');
   document.body.style.overflow = 'hidden';
   m.scrollTop = 0;
+  // Small delay to let DOM render before observing
+  setTimeout(initReveal, 50);
 }
 
 function closeModal() {
@@ -950,6 +968,33 @@ document.getElementById('modal').addEventListener('click', e => {
   if (e.target === document.getElementById('modal')) closeModal();
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Scroll reveal for insight images
+function initReveal() {
+  const imgs = document.querySelectorAll('.reveal-img');
+  if (!imgs.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        entry.target.classList.remove('hidden');
+      } else {
+        entry.target.classList.remove('visible');
+        entry.target.classList.add('hidden');
+      }
+    });
+  }, {
+    root: document.getElementById('modal'),
+    threshold: 0.15,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  imgs.forEach((img, i) => {
+    img.style.transitionDelay = (i % 3) * 0.1 + 's';
+    observer.observe(img);
+  });
+}
 </script>
 </body>
 </html>
