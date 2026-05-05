@@ -585,19 +585,87 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
+    /* NAV */
     nav { padding: 1rem 1.4rem; }
-    .hero { padding: 0 1.4rem 3.5rem; }
-    #projects { padding: 0 1.4rem 5rem; }
-    .projects-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .feat-card:nth-child(1) { grid-column: span 2; grid-row: auto; height: 300px; }
-    .feat-card:nth-child(n) { height: 220px; }
-    #about { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.4rem; }
-    .modal-body { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.4rem 5rem; }
-    .modal-topbar, .gif-gallery-header { padding: 1rem 1.4rem; }
-    .gif-gallery-wrap { padding: 2rem 0 2rem 1.4rem; }
-    .gif-gallery { padding-right: 1.4rem; }
-    .gif-item, .gif-placeholder { width: 260px; height: 165px; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 0.68rem; }
+    .nav-contact { font-size: 0.68rem; }
+
+    /* HERO */
+    .hero { padding: 0 1.4rem 3rem; min-height: 100svh; }
+    .hero-name { font-size: clamp(3rem, 14vw, 5rem); }
+    .hero-bottom { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+    .hero-desc { max-width: 100%; font-size: 0.82rem; }
+    .hero-stats { gap: 2rem; }
+
+    /* PROJECTS GRID */
+    #projects { padding: 0 1.4rem 4rem; }
+    .projects-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+    .feat-card:nth-child(1) { grid-column: 1; grid-row: auto; height: 260px; }
+    .feat-card:nth-child(2) { grid-column: 1; grid-row: auto; height: 220px; }
+    .feat-card:nth-child(3) { grid-column: 1; grid-row: auto; height: 220px; }
+    .feat-card:nth-child(4) { grid-column: 1; grid-row: auto; height: 220px; }
+    .feat-card:nth-child(5) { grid-column: 1; grid-row: auto; height: 220px; }
+
+    /* ABOUT */
+    #about { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.4rem; }
+    .about-sticky { position: static; }
+    .about-title { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+
+    /* FOOTER */
     footer { flex-direction: column; gap: 0.6rem; text-align: center; padding: 1.5rem; }
+
+    /* MODAL */
+    .modal-topbar { padding: 1rem 1.4rem; }
+    .modal-cover { height: 35vh; }
+
+    /* GIF GALLERY */
+    .gif-gallery-wrap { padding: 1.8rem 0 1.8rem 1.4rem; }
+    .gif-gallery-header { padding-right: 1.4rem; margin-bottom: 1rem; }
+    .gif-video-item { width: 280px; height: 160px; }
+    .gif-video-item.solo { width: calc(100vw - 2.8rem); height: 200px; max-width: 100%; }
+    .gif-item, .gif-placeholder { width: 240px; height: 150px; }
+
+    /* MODAL BODY */
+    .modal-body {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding: 2rem 1.4rem 4rem;
+    }
+    .modal-title { font-size: clamp(2.2rem, 10vw, 3.5rem); margin-bottom: 2rem; }
+
+    /* SIDEBAR — goes below content on mobile */
+    .modal-sidebar {
+      position: static;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .meta-group { padding: 1rem 1rem 1rem 0; border-bottom: 1px solid var(--border); border-right: none; }
+    .meta-group:nth-child(odd) { border-right: 1px solid var(--border); padding-right: 1rem; }
+
+    /* INSIGHT IMAGES — full width on mobile */
+    .insight-block img { width: 100% !important; }
+    div[style*="grid-template-columns: repeat(auto-fit"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-links { display: none; }
+    .hero-eyebrow { font-size: 0.6rem; }
+    .hero-stats { gap: 1.5rem; }
+    .stat-num { font-size: 2rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .skill-item:nth-child(even) { border-right: none; }
+    .modal-sidebar { grid-template-columns: 1fr; }
+    .meta-group:nth-child(odd) { border-right: none; padding-right: 0; }
   }
 </style>
 </head>
@@ -787,8 +855,11 @@ const projects = [
         text: "Hell Architect: Survivors è stato sviluppato con <strong>Leonardo Interactive</strong>, studio italiano di game development. È l'unico progetto del portfolio realizzato all'interno di un team strutturato e professionale." },
       { label: "Help in Design", placeholder: false,
         text: "Ho collaborato alla realizzazione delle principali meccaniche di progressione del gioco: sistema di sblocco delle armi, fine tuning delle abilità e stesura del GDD. Ho inoltre ricoperto il ruolo di traduttore per le quote, gli achievement e le armi del gioco." },
+      { label: "Progression", placeholder: false,
+        text: "Confrontandomi col Director ho avuto l'onore di contribuire alla realizzazione delle principali meccaniche di progressione del titolo attraverso lo sblocco ed il potenziamento delle abilità.",
+        img: "hellarch_progression.png" },
       { label: "Level Design", placeholder: false,
-        text: "Ho lavorato interamente alla realizzazione di un livello 2D con tileset, occupandomi di tutte le fasi: dalla costruzione dell'ambiente al testing, fino al debug." }
+        text: "Ho lavorato interamente alla realizzazione di un livello 2D con tileset, occupandomi di tutte le fasi: dalla costruzione dell'ambiente al testing, fino al debug.<br><br><em style='font-size:0.78rem; color:var(--text-muted);'>⚠ Per motivi di NDA non è possibile mostrare materiale visivo relativo a questa sezione.</em>" },
     ]
   },
   {
