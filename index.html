@@ -650,7 +650,7 @@
     </div>
 
     <div class="feat-card" onclick="openModal(2)">
-      <img class="feat-img" src="testConcept.png" alt="Cosmo Cab">
+      <img class="feat-img" src="cosmocab_cover.png" alt="Cosmo Cab">
       <div class="feat-overlay">
         <span class="feat-num">03</span>
         <h2 class="feat-title">Cosmo Cab</h2>
@@ -760,7 +760,7 @@ const projects = [
     titleHTML: "Hell Architect:<br><em>Survivors</em>",
     img: "hellarch.jpg",
     studio: "Leonardo Interactive", genre: "Roguelite / Survivor",
-    engine: "Unity", year: "2024", indie: false,
+    engine: "Unity", year: "2025", indie: false,
     // Sostituisci i null con i path delle tue gif: es. "hellarch_1.gif"
     gifs: [],
     gifLabels: [],
@@ -770,7 +770,7 @@ const projects = [
       { label: "Contesto", placeholder: false,
         text: "Hell Architect: Survivors è stato sviluppato con <strong>Leonardo Interactive</strong>, studio italiano di game development. È l'unico progetto del portfolio realizzato all'interno di un team strutturato e professionale." },
       { label: "Help in Design", placeholder: false,
-        text: "Ho collaborato alla realizzazione delle principali meccaniche di progressione del gioco: sistema di sblocco delle armi, fine tuning delle abilità e stesura del GDD. Ho inoltre ricoperto il ruolo di traduttore per la documentazione di progetto." },
+        text: "Ho collaborato alla realizzazione delle principali meccaniche di progressione del gioco: sistema di sblocco delle armi, fine tuning delle abilità e stesura del GDD. Ho inoltre ricoperto il ruolo di traduttore per le quote, gli achievement e le armi del gioco." },
       { label: "Level Design", placeholder: false,
         text: "Ho lavorato interamente alla realizzazione di un livello 2D con tileset, occupandomi di tutte le fasi: dalla costruzione dell'ambiente al testing, fino al debug." }
     ]
@@ -781,7 +781,7 @@ const projects = [
     titleHTML: "Evil<em>Shot</em>",
     img: "evilshot_logo.png",
     studio: "Indie", genre: "Action Shooter",
-    engine: "Unreal Engine 5", year: "2024", indie: true,
+    engine: "Unreal Engine 5", year: "2026", indie: true,
     gifs: [],
     gifLabels: [],
     galleryVideos: [
@@ -803,38 +803,50 @@ const projects = [
     name: "Cosmo Cab",
     kicker: "Level Designer",
     titleHTML: "Cosmo<br><em>Cab</em>",
-    img: "testConcept.png",
+    img: "cosmocab_cover.png",
     studio: "Indie", genre: "Racing / Arcade",
-    engine: "Unity", year: "2024", indie: true,
-    gifs: [null, null],
-    gifLabels: ["Track overview", "Key section detail"],
+    engine: "Unity", year: "2025–2026", indie: true,
+    gifs: [],
+    gifLabels: [],
+    galleryVideos: [
+      { src: "cosmoVero.mp4", label: "Gameplay 1" },
+      { src: "cosmo2.mp4", label: "Gameplay 2" }
+    ],
     insights: [
       { label: "Concept del livello", placeholder: false,
         text: "Il livello si sviluppa su un tracciato urbano futuristico lungo 3 km, con elementi verticali che raggiungono i 250 mt. Il design sfrutta la metropoli come sfondo narrativo e fisico, con loop, salti e variazioni di quota." },
-      { label: "Progettazione del tracciato", placeholder: true,
-        hint: "💡 Come hai definito il ritmo delle curve, i salti, i loop?" },
-      { label: "Scala e leggibilità", placeholder: true,
-        hint: "💡 Come hai guidato l'occhio del giocatore a 250 mt di altezza?" },
-      { label: "Iterazione e test", placeholder: true,
-        hint: "💡 Hai fatto playtest? Cosa cambiavi dopo ogni sessione?" }
+      { label: "Paper Map", placeholder: false,
+        text: "Il primo step per la realizzazione del livello è stata la fase di Concept. Il gioco prende elementi del mondo reale e li mixa a quelli di una realtà fantastica: in un mondo cyberpunk e futuristico come quello di <em>Neon 8</em>, il mio scopo era chiaro sin dall'inizio — reinterpretare secondo la nostra visione edifici iconici della realtà e renderli a misura del nostro mondo.<br><br>L'intero flusso del tracciato è ispirato ai più classici Hot Wheels e ai giochi arcade del genere: unito al traffico urbano, dona quel senso di <em>Urban</em> che identifica il titolo.",
+        img: "cosmocab_papermap.png" },
+      { label: "Concept Art", placeholder: false,
+        text: "Una volta realizzata la paper map 2D — avvalendomi di strumenti come Miro e Canva — ho lavorato a stretto contatto con i Concept Artist, guidandoli nella realizzazione grafica di un concept pensato per essere facilmente riproducibile in 3D, prima di procedere con il blockout in engine.<br><br>Per il posizionamento placeholder degli edifici mi sono interfacciato con il programmatore: ci siamo confrontati sulla realizzazione di un tool che spawnasse i palazzi in modo modulare, permettendo di testare dinamicamente prospettive e dimensioni.",
+        imgs: ["cosmo_concept1.png", "cosmo_blockout1.png", "cosmo_blockout2.png"] },
+      { label: "Dressing", placeholder: false,
+        text: "Ancora work in progress — successivamente al blockout, analizzando il layout assieme a un UX designer esterno, ho realizzato uno schema da consegnare agli artist per il dressing definitivo del livello. Non potendo essere composto esclusivamente di palazzi, ho delineato una suddivisione in quartieri e punti centrali, lasciando libertà creativa agli artist per il dressing delle strade e dell'area centrale — progettata per essere un parco — nella fase definitiva del gioco.<br><br><em style='font-size:0.75rem; color:var(--text-muted);'>Le illustrazioni 2D sono opera dei Concept Artist del titolo.</em>",
+        imgs: ["cosmo_dressing1.png", "cosmo_dressing2.png", "cosmo_dressing3.png"] },
+      { label: "Stato", placeholder: false,
+        text: "Il progetto è ancora <strong>Work in Progress</strong>." }
     ]
   },
   {
     name: "Tyranny of Ghost",
     kicker: "Concept Level Designer",
     titleHTML: "Tyranny<br><em>of Ghost</em>",
-    img: "togFoto.png",
+    img: "togMenu.png",
     studio: "Indie", genre: "Action RPG",
-    engine: "Unity", year: "2023", indie: true,
-    gifs: [null, null, null],
-    gifLabels: ["Level layout", "Navigation flow", "Combat zones"],
+    engine: "Unity", year: "2025", indie: true,
+    gifs: [],
+    gifLabels: [],
+    galleryVideos: [{ src: "videoTog.mp4", label: "Gameplay" }],
     insights: [
-      { label: "Il progetto", placeholder: true,
-        hint: "💡 Ambientazione, tono, pubblico target." },
-      { label: "Concept Level Design", placeholder: true,
-        hint: "💡 Come trasli un concept in una planimetria?" },
-      { label: "Spazio e navigazione", placeholder: true,
-        hint: "💡 Come hai gestito la lettura degli spazi medievali?" }
+      { label: "Il progetto", placeholder: false,
+        text: "Tyranny of Ghost è un progetto accademico in cui ho ricoperto il ruolo di <strong>Concept Level Designer</strong>, occupandomi dell'ideazione del main flow dell'esperienza di gioco." },
+      { label: "Concept", placeholder: false,
+        text: "L'ambientazione labirintica è ispirata alla struttura del <em>Borgo Medioevale di Torino</em>: da lì nasce l'idea per la percorribilità degli spazi e per le varie interazioni legate alla riparazione della Statua, elemento cardine dell'intera esperienza.",
+        img: "tog_flow.png" },
+      { label: "Flow", placeholder: false,
+        text: "Ho progettato il flusso principale del giocatore all'interno del livello, definendo i punti di interazione chiave — dalla Fontana al Mulino, fino alla Villa — ciascuno legato a una meccanica specifica in modalità normale o fantasma.",
+        img: "tog_map.png" }
     ]
   }
 ];
@@ -893,14 +905,23 @@ function openModal(i) {
 
   buildGallery(p.gifs, p.gifLabels, p.galleryVideo, p.galleryVideos);
 
-  document.getElementById('modal-insights').innerHTML = p.insights.map(ins =>
-    `<div class="insight-block">
-      <div class="insight-label">${ins.label}</div>
-      ${ins.placeholder
-        ? `<div class="insight-text placeholder"><span class="placeholder-tag">da completare</span><br>${ins.hint}</div>`
-        : `<div class="insight-text">${ins.text}</div>`}
-    </div>`
-  ).join('');
+  document.getElementById('modal-insights').innerHTML = p.insights.map(ins => {
+    let content = '';
+    if (ins.placeholder) {
+      content = `<div class="insight-text placeholder"><span class="placeholder-tag">da completare</span><br>${ins.hint}</div>`;
+    } else {
+      content = `<div class="insight-text">${ins.text}</div>`;
+      if (ins.img) {
+        content += `<img src="${ins.img}" alt="${ins.label}" style="width:100%; margin-top:1.2rem; border:1px solid var(--border-light); display:block;">`;
+      }
+      if (ins.imgs) {
+        content += `<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:8px; margin-top:1.2rem;">` +
+          ins.imgs.map(src => `<img src="${src}" alt="" style="width:100%; border:1px solid var(--border-light); display:block;">`).join('') +
+          `</div>`;
+      }
+    }
+    return `<div class="insight-block"><div class="insight-label">${ins.label}</div>${content}</div>`;
+  }).join('');
 
   document.getElementById('modal-sidebar').innerHTML = `
     <div class="meta-group"><div class="meta-label">Ruolo</div><div class="meta-value">${p.kicker}</div></div>
