@@ -687,6 +687,9 @@
     transition: filter 0.3s;
   }
   .modal-carousel-img:hover { filter: brightness(1); }
+  /* Keep the endless carousel track from widening the modal's grid column */
+  .modal-body > *, .insight-block { min-width: 0; }
+  .modal-carousel-wrap { max-width: 100%; }
 
   .insight-text.placeholder {
     background: var(--surface2); border: 1px dashed var(--border-light);
@@ -740,9 +743,12 @@
     /* PROJECTS GRID */
     #projects { padding: 0 1.4rem 4rem; }
     .projects-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr !important;
       grid-template-rows: auto;
     }
+    .projects-grid > * { min-width: 0; }
+    .projects-grid .feat-card { height: auto !important; width: 100%; }
+    .carousel-card { width: 80vw; height: auto; aspect-ratio: 16/9; }
     .feat-card:nth-child(1) { grid-column: 1; grid-row: auto; height: 260px; }
     .feat-card:nth-child(2) { grid-column: 1; grid-row: auto; height: 220px; }
     .feat-card:nth-child(3) { grid-column: 1; grid-row: auto; height: 220px; }
@@ -791,6 +797,8 @@
 
     /* INSIGHT IMAGES: full width on mobile */
     .insight-block img { width: 100% !important; }
+    .insight-block .modal-carousel-img { width: 80vw !important; }
+    .modal-carousel-track { animation-duration: 24s; }
     div[style*="grid-template-columns: repeat(auto-fit"] {
       grid-template-columns: 1fr !important;
     }
