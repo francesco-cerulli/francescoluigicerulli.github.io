@@ -78,6 +78,17 @@
     transition: color 0.2s, border-color 0.2s;
   }
   .nav-contact:hover { color: var(--accent); border-color: var(--accent); }
+  .nav-right { display: flex; align-items: center; gap: 1.4rem; }
+  .lang-toggle {
+    background: none; border: 1px solid var(--border-light); border-radius: 999px;
+    padding: 0.28rem 0.7rem; cursor: pointer;
+    font-family: inherit; font-size: 0.66rem; letter-spacing: 0.12em;
+    color: var(--text-muted); transition: border-color 0.2s;
+  }
+  .lang-toggle:hover { border-color: var(--accent); }
+  .lang-toggle span { transition: color 0.2s; }
+  .lang-toggle span.active { color: var(--accent); }
+  .lang-toggle .sep { margin: 0 0.3rem; opacity: 0.5; }
 
   /* ── HERO ── */
   .hero {
@@ -593,9 +604,9 @@
 
   /* ── MODAL BODY ── */
   .modal-body {
-    max-width: 1100px; margin: 0 auto;
+    max-width: 1320px; margin: 0 auto;
     padding: 5rem 3rem 8rem;
-    display: grid; grid-template-columns: 1fr 260px; gap: 5rem;
+    display: grid; grid-template-columns: 1fr 240px; gap: 4rem;
     align-items: start;
   }
   .modal-kicker {
@@ -689,6 +700,7 @@
   .modal-carousel-img:hover { filter: brightness(1); }
   /* Keep the endless carousel track from widening the modal's grid column */
   .modal-body > *, .insight-block { min-width: 0; }
+  .insight-text { max-width: 720px; }
   .modal-carousel-wrap { max-width: 100%; }
 
   .insight-text.placeholder {
@@ -821,14 +833,17 @@
 <nav>
   <div class="nav-avatar"
        onclick="window.open('https://www.linkedin.com/in/francesco-luigi-cerulli-013477348/', '_blank')"
-       title="Profilo LinkedIn">
+       title="Profilo LinkedIn" data-i18n-title="navLinkedin">
     <span class="nav-avatar-initials">FC</span>
   </div>
   <ul class="nav-links">
-    <li><a href="#projects">Lavori</a></li>
+    <li><a href="#projects" data-i18n="navWork">Lavori</a></li>
     <li><a href="#about">About</a></li>
   </ul>
-  <a href="mailto:francescocerulli77@gmail.com" class="nav-contact">Contatti</a>
+  <div class="nav-right">
+    <button class="lang-toggle" onclick="toggleLang()" aria-label="Cambia lingua / Switch language"><span data-l="it">IT</span><span class="sep">/</span><span data-l="en">EN</span></button>
+    <a href="mailto:francescocerulli77@gmail.com" class="nav-contact" data-i18n="navContact">Contatti</a>
+  </div>
 </nav>
 
 <section class="hero">
@@ -836,11 +851,11 @@
     <p class="hero-eyebrow">Game Designer &amp; Level Designer</p>
     <h1 class="hero-name">Francesco<br><em>Luigi</em><br>Cerulli</h1>
     <div class="hero-bottom">
-      <p class="hero-desc">
+      <p class="hero-desc" data-i18n="heroDesc">
         Progetto esperienze di gioco: dall'architettura dei livelli alla meccanica del gameplay. Ogni spazio racconta una storia.
       </p>
       <div class="hero-stats">
-        <div><div class="stat-num">5</div><div class="stat-label">Progetti</div></div>
+        <div><div class="stat-num">5</div><div class="stat-label" data-i18n="statProjects">Progetti</div></div>
         <div><div class="stat-num">2</div><div class="stat-label">Experience</div></div>
         <div><div class="stat-num">3</div><div class="stat-label">Personal</div></div>
       </div>
@@ -981,9 +996,9 @@
     </h2>
   </div>
   <div>
-    <p class="about-text">Sono Francesco Luigi Cerulli, Game Designer e Level Designer con esperienza nel creare esperienze di gioco coerenti e coinvolgenti.</p>
-    <p class="about-text">Dal progettare sistemi di gameplay alla costruzione di spazi tridimensionali percorribili, il mio approccio unisce logica architetturale e narrazione ambientale: ogni corridoio ha un ritmo, ogni arena una tensione.</p>
-    <p class="about-text">Ho lavorato su titoli indipendenti e in studio, sviluppando competenze trasversali tra design e programmazione su Unity e Unreal Engine 5.</p>
+    <p class="about-text" data-i18n="about1">Sono Francesco Luigi Cerulli, Game Designer e Level Designer con esperienza nel creare esperienze di gioco coerenti e coinvolgenti.</p>
+    <p class="about-text" data-i18n="about2">Dal progettare sistemi di gameplay alla costruzione di spazi tridimensionali percorribili, il mio approccio unisce logica architetturale e narrazione ambientale: ogni corridoio ha un ritmo, ogni arena una tensione.</p>
+    <p class="about-text" data-i18n="about3">Ho lavorato su titoli indipendenti e in studio, sviluppando competenze trasversali tra design e programmazione su Unity e Unreal Engine 5.</p>
     <div class="skills-grid">
       <div class="skill-item">Game Design</div>
       <div class="skill-item">Level Design</div>
@@ -1006,8 +1021,11 @@
 <div class="modal-backdrop" id="modal">
   <div class="modal-inner">
     <div class="modal-topbar">
-      <div class="modal-breadcrumb">Lavori <span>/ <span id="modal-bc"></span></span></div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-breadcrumb"><span data-i18n="navWork">Lavori</span> <span>/ <span id="modal-bc"></span></span></div>
+      <div class="nav-right">
+        <button class="lang-toggle" onclick="toggleLang()" aria-label="Cambia lingua / Switch language"><span data-l="it">IT</span><span class="sep">/</span><span data-l="en">EN</span></button>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
     </div>
 
     <!-- Image cover -->
@@ -1153,12 +1171,106 @@ const projects = [
         text: "Durante la fase di design dei nemici mi sono confrontato con il concetto di <strong>Orthogonal Unit Differentiation</strong> di Keith Burgun: ogni tipo di nemico deve avere comportamenti e debolezze fondamentalmente diversi tra loro: non nemici più forti o più deboli,<br>ma che richiedono <em>strategie completamente differenti</em> per essere affrontati.<br>Questo principio ha guidato la scelta di introdurre un <strong>tipo di nemico specifico per la sezione uffici</strong>, pensato per rompere il ritmo rispetto al corridoio e creare un'esperienza di combattimento distinta." },
       { label: "Implementazione in UE5", placeholder: false,
         text: "Sul lato tecnico ho implementato un sistema di <strong>Level Streaming</strong> con LV_Master come livello persistente e sublevels (LV_Zona_A, LV_Zona_B, LVL_Corridoio, LV_Bootstrap).<br><br>Ho realizzato un <strong>BP_StreamingTrigger</strong> con array LevelsToLoad/LevelsToUnload Instance Editable, e un <strong>sistema di porte bidirezionale</strong> tramite dot product per gestire il corretto ExitPoint in base alla direzione di attraversamento.<br><br>Il blockout è stato realizzato interamente in <strong>Modeling Mode di UE5.7</strong>.",
-        carousel: ["jseeds_b1.png", "jseeds_b2.png", "jseeds_b3.png", "jseeds_b4.png"] },
+        imgs: ["jseeds_b1.png", "jseeds_b2.png", "jseeds_b3.png", "jseeds_b4.png"], imgsLarge: true },
       { label: "Note", placeholder: false,
         text: "<em style='font-size:0.78rem; color:var(--text-muted);'>⚠ Per motivi di NDA non è possibile mostrare ulteriore materiale visivo o fornire dettagli aggiuntivi sul progetto.</em>" }
     ]
   }
 ];
+
+
+// ===== English translations (IT is the source text above) =====
+const I18N = {
+  it: {
+    navLinkedin: "Profilo LinkedIn", navWork: "Lavori", navContact: "Contatti",
+    heroDesc: "Progetto esperienze di gioco: dall'architettura dei livelli alla meccanica del gameplay. Ogni spazio racconta una storia.",
+    statProjects: "Progetti",
+    about1: "Sono Francesco Luigi Cerulli, Game Designer e Level Designer con esperienza nel creare esperienze di gioco coerenti e coinvolgenti.",
+    about2: "Dal progettare sistemi di gameplay alla costruzione di spazi tridimensionali percorribili, il mio approccio unisce logica architetturale e narrazione ambientale: ogni corridoio ha un ritmo, ogni arena una tensione.",
+    about3: "Ho lavorato su titoli indipendenti e in studio, sviluppando competenze trasversali tra design e programmazione su Unity e Unreal Engine 5.",
+    role: "Ruolo", genre: "Genere", year: "Anno", pro: "🏢 Collaborazione professionale"
+  },
+  en: {
+    navLinkedin: "LinkedIn profile", navWork: "Work", navContact: "Contact",
+    heroDesc: "I design game experiences: from level architecture to gameplay mechanics. Every space tells a story.",
+    statProjects: "Projects",
+    about1: "I'm Francesco Luigi Cerulli, a Game Designer and Level Designer with experience in crafting coherent, engaging game experiences.",
+    about2: "From designing gameplay systems to building traversable 3D spaces, my approach combines architectural logic and environmental storytelling: every corridor has a rhythm, every arena a tension.",
+    about3: "I've worked on indie and studio titles, building cross-disciplinary skills in design and programming with Unity and Unreal Engine 5.",
+    role: "Role", genre: "Genre", year: "Year", pro: "🏢 Professional collaboration"
+  }
+};
+
+const NDA = "<em style='font-size:0.78rem; color:var(--text-muted);'>";
+const INSIGHTS_EN = {
+  "Hell Architect: Survivors": [
+    ["Context", "Hell Architect: Survivors was developed with <strong>Trinity Team</strong> and published by <strong>Leonardo Interactive</strong>. It is the only project in this portfolio made within a structured, professional team."],
+    ["Help in Design", "I helped build the game's core progression mechanics: the weapon unlock system, ability fine-tuning and writing the GDD. I also worked as translator for the game's quotes, achievements and weapons."],
+    ["Progression", "Working with the Director, I had the privilege of contributing to the title's main progression mechanics through the unlocking and upgrading of abilities."],
+    ["Level Design", "I built an entire 2D tileset-based level, handling every stage: from environment construction to testing and debugging.<br><br>" + NDA + "⚠ Due to NDA, no visual material can be shown for this section.</em>"]
+  ],
+  "EvilShot": [
+    ["Project", "Academic project made for a course showcase, aiming to meet the required Minimum Viable Product in a simple, effective way."],
+    ["Game Design", "I wrote the game design, keeping a simple and effective approach to meet the MVP requirements and deliver a coherent experience within the showcase deadline."],
+    ["Shooting System", "The shooting system is built in Blueprint with raycasts: the pistol fires a precise shot that applies a <em>weak shot</em> to the head, killing an enemy in two hits. Reloading and the fine-tuning of the player's movement variables are also handled in Blueprint."],
+    ["Piazza Pulita: Ability", "I implemented in Blueprint a special ability designed to give the player breathing room under pressure: <em>Piazza Pulita</em> clears the surrounding area, removing immediate threats. A cooldown balances it and prevents abuse, so the risk is always present."]
+  ],
+  "Cosmo Cab": [
+    ["Level concept", "The level is built on a 3 km futuristic urban track, with vertical elements reaching 250 m. The design uses the metropolis as both narrative and physical backdrop, with loops, jumps and elevation changes."],
+    ["Paper Map", "The first step in building the level was the Concept phase. The game takes real-world elements and mixes them with a fantasy reality: in a cyberpunk, futuristic world like that of <em>Neon 8</em>, my goal was clear from the start: reinterpret iconic real-world buildings through our vision and scale them to our world.<br><br>The whole flow of the track is inspired by classic Hot Wheels and arcade racers: combined with city traffic, it delivers the <em>Urban</em> feel that defines the title."],
+    ["Concept Art", "Once the 2D paper map was done, using tools such as Miro and Canva, I worked closely with the Concept Artists, guiding them toward a concept designed to be easily reproduced in 3D before moving on to the in-engine blockout.<br><br>For the placeholder placement of the buildings I worked with the programmer: together we defined a tool that spawned buildings modularly, letting us test perspectives and sizes dynamically."],
+    ["Dressing", "Still a work in progress: after the blockout, reviewing the layout with an external UX designer, I created a plan to hand over to the artists for the final dressing of the level. Since it couldn't be made of buildings only, I outlined a split into districts and central points, leaving the artists creative freedom in dressing the streets and the central area, designed to become a park in the final version of the game.<br><br><em style='font-size:0.75rem; color:var(--text-muted);'>The 2D illustrations are by the title's Concept Artists.</em>"],
+    ["Status", "The project is still a <strong>Work in Progress</strong>."]
+  ],
+  "Tyranny of Ghost": [
+    ["The project", "Tyranny of Ghost is an academic project in which I was the <strong>Concept Level Designer</strong>, in charge of designing the main flow of the gameplay experience."],
+    ["Concept", "The labyrinthine setting is inspired by the layout of the <em>Borgo Medievale in Turin</em>: it shaped how the spaces are traversed and the interactions tied to repairing the Statue, the cornerstone of the whole experience."],
+    ["Flow", "I designed the player's main flow through the level, defining the key interaction points: from the Fountain to the Mill, up to the Villa, each tied to a specific mechanic in normal or ghost mode."]
+  ],
+  "JSeeds: TBA": [
+    ["The project", "TBA project developed in-house by JSeeds: a single-player TPS in Unreal Engine 5.7. I was one of the first designers to join the team, working closely with the Game Director from the earliest stages of production."],
+    ["Level structure", "I designed a level spread across several environments in vertical progression: from the entrance of a <strong>1950s–60s apartment block</strong> with corridors and stairwells, through a basement and workshop, cellars, an abandoned railway station, caves and a geodome leading to the <strong>alien spaceship</strong>.<br>Each area was documented with a <strong>Level Design Document</strong> and a flow chart made in Miro."],
+    ["Orthogonal Design", "While designing the enemies I worked with Keith Burgun's concept of <strong>Orthogonal Unit Differentiation</strong>: each enemy type must have fundamentally different behaviours and weaknesses: not stronger or weaker enemies,<br>but ones that require <em>completely different strategies</em> to be defeated.<br>This principle led to introducing an <strong>enemy type specific to the office section</strong>, meant to break the rhythm after the corridor and create a distinct combat experience."],
+    ["UE5 implementation", "On the technical side I implemented a <strong>Level Streaming</strong> system with LV_Master as the persistent level and sublevels (LV_Zona_A, LV_Zona_B, LVL_Corridoio, LV_Bootstrap).<br><br>I built a <strong>BP_StreamingTrigger</strong> with Instance Editable LevelsToLoad/LevelsToUnload arrays, and a <strong>bidirectional door system</strong> using the dot product to pick the correct ExitPoint based on the crossing direction.<br><br>The blockout was made entirely in <strong>UE5.7 Modeling Mode</strong>."],
+    ["Notes", NDA + "⚠ Due to NDA, no further visual material or project details can be shared.</em>"]
+  ]
+};
+
+let LANG = 'it';
+try { LANG = localStorage.getItem('lang') || ''; } catch (e) { LANG = ''; }
+if (LANG !== 'it' && LANG !== 'en') {
+  LANG = (navigator.language || 'it').toLowerCase().startsWith('it') ? 'it' : 'en';
+}
+let currentProject = null;
+
+function t(key) { return (I18N[LANG] && I18N[LANG][key]) || I18N.it[key]; }
+
+function applyLang() {
+  document.documentElement.lang = LANG;
+  document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-title]').forEach(el => { el.title = t(el.dataset.i18nTitle); });
+  document.querySelectorAll('.lang-toggle [data-l]').forEach(el => el.classList.toggle('active', el.dataset.l === LANG));
+  if (currentProject !== null && document.getElementById('modal').classList.contains('open')) {
+    const y = document.getElementById('modal').scrollTop;
+    openModal(currentProject, true);
+    document.getElementById('modal').scrollTop = y;
+  }
+}
+
+function toggleLang() {
+  LANG = LANG === 'it' ? 'en' : 'it';
+  try { localStorage.setItem('lang', LANG); } catch (e) {}
+  applyLang();
+}
+
+function insightFor(p, i) {
+  const ins = p.insights[i];
+  if (LANG === 'en' && INSIGHTS_EN[p.name] && INSIGHTS_EN[p.name][i]) {
+    const [label, text] = INSIGHTS_EN[p.name][i];
+    return Object.assign({}, ins, { label, text });
+  }
+  return ins;
+}
 
 function buildGallery(gifs, labels, galleryVideo, galleryVideos) {
   const gallery = document.getElementById('gif-gallery');
@@ -1203,7 +1315,8 @@ function buildGallery(gifs, labels, galleryVideo, galleryVideos) {
   gallery.scrollLeft = 0;
 }
 
-function openModal(i) {
+function openModal(i, keepScroll) {
+  currentProject = i;
   const p = projects[i];
   const m = document.getElementById('modal');
 
@@ -1214,7 +1327,7 @@ function openModal(i) {
 
   buildGallery(p.gifs, p.gifLabels, p.galleryVideo, p.galleryVideos);
 
-  document.getElementById('modal-insights').innerHTML = p.insights.map(ins => {
+  document.getElementById('modal-insights').innerHTML = p.insights.map((_, idx) => insightFor(p, idx)).map(ins => {
     let content = '';
     if (ins.placeholder) {
       content = `<div class="insight-text placeholder"><span class="placeholder-tag">da completare</span><br>${ins.hint}</div>`;
@@ -1244,20 +1357,20 @@ function openModal(i) {
   }).join('');
 
   document.getElementById('modal-sidebar').innerHTML = `
-    <div class="meta-group"><div class="meta-label">Ruolo</div><div class="meta-value">${p.kicker}</div></div>
+    <div class="meta-group"><div class="meta-label">${t('role')}</div><div class="meta-value">${p.kicker}</div></div>
     <div class="meta-group">
       <div class="meta-label">Studio</div><div class="meta-value">${p.studio}</div>
-      ${!p.indie ? '<div class="meta-badge">🏢 Collaborazione professionale</div>' : ''}
+      ${!p.indie ? '<div class="meta-badge">' + t('pro') + '</div>' : ''}
     </div>
     ${p.publisher ? `<div class="meta-group"><div class="meta-label">Publisher</div><div class="meta-value">${p.publisher}</div></div>` : ''}
-    <div class="meta-group"><div class="meta-label">Genere</div><div class="meta-value">${p.genre}</div></div>
+    <div class="meta-group"><div class="meta-label">${t('genre')}</div><div class="meta-value">${p.genre}</div></div>
     <div class="meta-group"><div class="meta-label">Engine</div><div class="meta-value">${p.engine}</div></div>
-    <div class="meta-group"><div class="meta-label">Anno</div><div class="meta-value">${p.year}</div></div>
+    <div class="meta-group"><div class="meta-label">${t('year')}</div><div class="meta-value">${p.year}</div></div>
   `;
 
   m.classList.add('open');
   document.body.style.overflow = 'hidden';
-  m.scrollTop = 0;
+  if (!keepScroll) m.scrollTop = 0;
   // Small delay to let DOM render before observing
   setTimeout(initReveal, 50);
 }
@@ -1273,6 +1386,8 @@ document.getElementById('modal').addEventListener('click', e => {
   if (e.target === document.getElementById('modal')) closeModal();
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+applyLang();
 
 // Scroll reveal for insight images
 function initReveal() {
