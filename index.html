@@ -1105,10 +1105,11 @@ const projects = [
         img: "cosmocab_layout.png" },
       { label: "Concept Art", placeholder: false,
         text: "Una volta realizzata la paper map 2D: avvalendomi di strumenti come Miro e Canva: ho lavorato a stretto contatto con i Concept Artist, guidandoli nella realizzazione grafica di un concept pensato per essere facilmente riproducibile in 3D, prima di procedere con il blockout in engine.<br><br>Per il posizionamento placeholder degli edifici mi sono interfacciato con il programmatore: ci siamo confrontati sulla realizzazione di un tool che spawnasse i palazzi in modo modulare, permettendo di testare dinamicamente prospettive e dimensioni.",
-        imgs: ["cosmo_concept1.png", "cosmo_blockout1.png", "cosmo_blockout2.png"] },
+        imgs: ["cosmo_concept1.png"] },
       { label: "Dressing", placeholder: false,
         text: "Ancora work in progress: successivamente al blockout, analizzando il layout assieme a un UX designer esterno, ho realizzato uno schema da consegnare agli artist per il dressing definitivo del livello. Non potendo essere composto esclusivamente di palazzi, ho delineato una suddivisione in quartieri e punti centrali, lasciando libertà creativa agli artist per il dressing delle strade e dell'area centrale: progettata per essere un parco: nella fase definitiva del gioco.<br><br><em style='font-size:0.75rem; color:var(--text-muted);'>Le illustrazioni 2D sono opera dei Concept Artist del titolo.</em>",
-        imgs: ["cosmocab_dressing_plan.png", "cosmo_dressing2.png", "cosmo_dressing3.png"] },
+        img: "cosmocab_dressing_plan.png",
+        imgs: ["cosmo_dressing2.png", "cosmo_dressing3.png"], imgsMin: 300 },
       { label: "Stato", placeholder: false,
         text: "Il progetto è ancora <strong>Work in Progress</strong>." }
     ]
@@ -1233,7 +1234,7 @@ function openModal(i) {
             `<img src="${src}" alt="" class="reveal-img jseeds-img">`
           ).join('');
         } else {
-          content += `<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:8px; margin-top:1.2rem;">` +
+          content += `<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(${ins.imgsMin || 220}px, 1fr)); gap:8px; margin-top:1.2rem;">` +
             ins.imgs.map(src => `<img src="${src}" alt="" class="reveal-img" style="width:100%; border:1px solid var(--border-light); display:block;">`).join('') +
             `</div>`;
         }
