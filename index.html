@@ -15,7 +15,11 @@
 <meta property="og:image:height" content="627">
 <meta property="og:image:alt" content="Francesco Luigi Cerulli — Game &amp; Level Designer">
 <meta name="twitter:card" content="summary_large_image">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"></noscript>
 <style>
   :root {
     --bg:          #0e0d0b;
@@ -874,7 +878,7 @@
   <div class="projects-grid" style="grid-template-columns: 1fr 1fr; background: var(--border); gap: 2px; margin-top: 2px;">
 
     <div class="feat-card" onclick="openModal(0)" style="aspect-ratio: 16/9;">
-      <img class="feat-img" src="hellArc.png" alt="Hell Architect: Survivors">
+      <img class="feat-img" loading="lazy" decoding="async" width="1200" height="675" src="hellArc.webp" alt="Hell Architect: Survivors">
       <div class="feat-overlay">
         <span class="feat-num">01</span>
         <h2 class="feat-title">Hell Architect:<br>Survivors</h2>
@@ -886,7 +890,7 @@
     </div>
 
     <div class="feat-card" onclick="openModal(4)" style="aspect-ratio: 16/9;">
-      <img class="feat-img" src="jseed_logo_main.jpg" alt="JSeeds TBA">
+      <img class="feat-img" loading="lazy" decoding="async" width="1200" height="670" src="jseed_logo_main.webp" alt="JSeeds TBA">
       <div class="feat-overlay">
         <span class="feat-num">02</span>
         <h2 class="feat-title">JSeeds<br><em>TBA</em></h2>
@@ -909,7 +913,7 @@
     <div class="carousel-track">
 
       <div class="carousel-card" onclick="openModal(1)">
-        <img class="feat-img" src="evilshot_logo.png" alt="EvilShot">
+        <img class="feat-img" loading="lazy" decoding="async" width="957" height="500" src="evilshot_logo.webp" alt="EvilShot">
         <div class="feat-overlay">
           <span class="feat-num">01</span>
           <h2 class="feat-title">EvilShot</h2>
@@ -921,7 +925,7 @@
       </div>
 
       <div class="carousel-card" onclick="openModal(2)">
-        <img class="feat-img" src="cosmocab_cover.png" alt="Cosmo Cab">
+        <img class="feat-img" loading="lazy" decoding="async" width="671" height="366" src="cosmocab_cover.webp" alt="Cosmo Cab">
         <div class="feat-overlay">
           <span class="feat-num">02</span>
           <h2 class="feat-title">Cosmo Cab</h2>
@@ -933,7 +937,7 @@
       </div>
 
       <div class="carousel-card" onclick="openModal(3)">
-        <img class="feat-img" src="togFoto.png" alt="Tyranny of Ghost">
+        <img class="feat-img" loading="lazy" decoding="async" width="957" height="500" src="togFoto.webp" alt="Tyranny of Ghost">
         <div class="feat-overlay">
           <span class="feat-num">03</span>
           <h2 class="feat-title">Tyranny<br>of Ghost</h2>
@@ -946,7 +950,7 @@
 
       <!-- Duplicates for seamless loop -->
       <div class="carousel-card" onclick="openModal(1)">
-        <img class="feat-img" src="evilshot_logo.png" alt="EvilShot">
+        <img class="feat-img" loading="lazy" decoding="async" width="957" height="500" src="evilshot_logo.webp" alt="EvilShot">
         <div class="feat-overlay">
           <span class="feat-num">01</span>
           <h2 class="feat-title">EvilShot</h2>
@@ -958,7 +962,7 @@
       </div>
 
       <div class="carousel-card" onclick="openModal(2)">
-        <img class="feat-img" src="cosmocab_cover.png" alt="Cosmo Cab">
+        <img class="feat-img" loading="lazy" decoding="async" width="671" height="366" src="cosmocab_cover.webp" alt="Cosmo Cab">
         <div class="feat-overlay">
           <span class="feat-num">02</span>
           <h2 class="feat-title">Cosmo Cab</h2>
@@ -970,7 +974,7 @@
       </div>
 
       <div class="carousel-card" onclick="openModal(3)">
-        <img class="feat-img" src="togFoto.png" alt="Tyranny of Ghost">
+        <img class="feat-img" loading="lazy" decoding="async" width="957" height="500" src="togFoto.webp" alt="Tyranny of Ghost">
         <div class="feat-overlay">
           <span class="feat-num">03</span>
           <h2 class="feat-title">Tyranny<br>of Ghost</h2>
@@ -1057,7 +1061,7 @@ const projects = [
     name: "Hell Architect: Survivors",
     kicker: "Design Help · Programming",
     titleHTML: "Hell Architect:<br><em>Survivors</em>",
-    img: "hellarch.jpg",
+    img: "hellarch.webp",
     studio: "Trinity Team", genre: "Roguelite / Survivor",
     publisher: "Leonardo Interactive",
     engine: "Unity", year: "2025", indie: false,
@@ -1073,7 +1077,7 @@ const projects = [
         text: "Ho collaborato alla realizzazione delle principali meccaniche di progressione del gioco: sistema di sblocco delle armi, fine tuning delle abilità e stesura del GDD. Ho inoltre ricoperto il ruolo di traduttore per le quote, gli achievement e le armi del gioco." },
       { label: "Progression", placeholder: false,
         text: "Confrontandomi col Director ho avuto l'onore di contribuire alla realizzazione delle principali meccaniche di progressione del titolo attraverso lo sblocco ed il potenziamento delle abilità.",
-        img: "hellarch_progression.png" },
+        img: "hellarch_progression.webp" },
       { label: "Level Design", placeholder: false,
         text: "Ho lavorato interamente alla realizzazione di un livello 2D con tileset, occupandomi di tutte le fasi: dalla costruzione dell'ambiente al testing, fino al debug.<br><br><em style='font-size:0.78rem; color:var(--text-muted);'>⚠ Per motivi di NDA non è possibile mostrare materiale visivo relativo a questa sezione.</em>" },
     ]
@@ -1082,7 +1086,7 @@ const projects = [
     name: "EvilShot",
     kicker: "Game Designer · Gameplay Programming",
     titleHTML: "Evil<em>Shot</em>",
-    img: "evilshot_logo.png",
+    img: "evilshot_logo.webp",
     studio: "Indie", genre: "Action Shooter",
     engine: "Unreal Engine 5", year: "2026", indie: true,
     gifs: [],
@@ -1106,7 +1110,7 @@ const projects = [
     name: "Cosmo Cab",
     kicker: "Level Designer",
     titleHTML: "Cosmo<br><em>Cab</em>",
-    img: "cosmocab_cover.png",
+    img: "cosmocab_cover.webp",
     studio: "Indie", genre: "Racing / Arcade",
     engine: "Unity", year: "2025–2026", indie: true,
     gifs: [],
@@ -1120,14 +1124,14 @@ const projects = [
         text: "Il livello si sviluppa su un tracciato urbano futuristico lungo 3 km, con elementi verticali che raggiungono i 250 mt. Il design sfrutta la metropoli come sfondo narrativo e fisico, con loop, salti e variazioni di quota." },
       { label: "Paper Map", placeholder: false,
         text: "Il primo step per la realizzazione del livello è stata la fase di Concept. Il gioco prende elementi del mondo reale e li mixa a quelli di una realtà fantastica: in un mondo cyberpunk e futuristico come quello di <em>Neon 8</em>, il mio scopo era chiaro sin dall'inizio: reinterpretare secondo la nostra visione edifici iconici della realtà e renderli a misura del nostro mondo.<br><br>L'intero flusso del tracciato è ispirato ai più classici Hot Wheels e ai giochi arcade del genere: unito al traffico urbano, dona quel senso di <em>Urban</em> che identifica il titolo.",
-        img: "cosmocab_layout.png" },
+        img: "cosmocab_layout.webp" },
       { label: "Concept Art", placeholder: false,
         text: "Una volta realizzata la paper map 2D: avvalendomi di strumenti come Miro e Canva: ho lavorato a stretto contatto con i Concept Artist, guidandoli nella realizzazione grafica di un concept pensato per essere facilmente riproducibile in 3D, prima di procedere con il blockout in engine.<br><br>Per il posizionamento placeholder degli edifici mi sono interfacciato con il programmatore: ci siamo confrontati sulla realizzazione di un tool che spawnasse i palazzi in modo modulare, permettendo di testare dinamicamente prospettive e dimensioni.",
-        imgs: ["cosmo_concept1.png"] },
+        imgs: ["cosmo_concept1.webp"] },
       { label: "Dressing", placeholder: false,
         text: "Ancora work in progress: successivamente al blockout, analizzando il layout assieme a un UX designer esterno, ho realizzato uno schema da consegnare agli artist per il dressing definitivo del livello. Non potendo essere composto esclusivamente di palazzi, ho delineato una suddivisione in quartieri e punti centrali, lasciando libertà creativa agli artist per il dressing delle strade e dell'area centrale: progettata per essere un parco: nella fase definitiva del gioco.<br><br><em style='font-size:0.75rem; color:var(--text-muted);'>Le illustrazioni 2D sono opera dei Concept Artist del titolo.</em>",
-        img: "cosmocab_dressing_plan.png",
-        imgs: ["cosmo_dressing2.png", "cosmo_dressing3.png"], imgsMin: 300 },
+        img: "cosmocab_dressing_plan.webp",
+        imgs: ["cosmo_dressing2.webp", "cosmo_dressing3.webp"], imgsMin: 300 },
       { label: "Stato", placeholder: false,
         text: "Il progetto è ancora <strong>Work in Progress</strong>." }
     ]
@@ -1136,7 +1140,7 @@ const projects = [
     name: "Tyranny of Ghost",
     kicker: "Concept Level Designer",
     titleHTML: "Tyranny<br><em>of Ghost</em>",
-    img: "togMenu.png",
+    img: "togMenu.webp",
     studio: "Indie", genre: "Action RPG",
     engine: "Unity", year: "2025", indie: true,
     gifs: [],
@@ -1147,17 +1151,17 @@ const projects = [
         text: "Tyranny of Ghost è un progetto accademico in cui ho ricoperto il ruolo di <strong>Concept Level Designer</strong>, occupandomi dell'ideazione del main flow dell'esperienza di gioco." },
       { label: "Concept", placeholder: false,
         text: "L'ambientazione labirintica è ispirata alla struttura del <em>Borgo Medioevale di Torino</em>: da lì nasce l'idea per la percorribilità degli spazi e per le varie interazioni legate alla riparazione della Statua, elemento cardine dell'intera esperienza.",
-        img: "tog_layout.png" },
+        img: "tog_layout.webp" },
       { label: "Flow", placeholder: false,
         text: "Ho progettato il flusso principale del giocatore all'interno del livello, definendo i punti di interazione chiave: dalla Fontana al Mulino, fino alla Villa: ciascuno legato a una meccanica specifica in modalità normale o fantasma.",
-        img: "tog_map.png" }
+        img: "tog_map.webp" }
     ]
   },
   {
     name: "JSeeds: TBA",
     kicker: "Level Designer",
     titleHTML: "<em>JSeeds</em><br>TBA",
-    img: "jseeds_blockout2.png",
+    img: "jseeds_blockout2.webp",
     studio: "JSeeds", genre: "3D / TBA",
     engine: "Unreal Engine 5", year: "2025–2026", indie: false,
     gifs: [], gifLabels: [],
@@ -1171,7 +1175,7 @@ const projects = [
         text: "Durante la fase di design dei nemici mi sono confrontato con il concetto di <strong>Orthogonal Unit Differentiation</strong> di Keith Burgun: ogni tipo di nemico deve avere comportamenti e debolezze fondamentalmente diversi tra loro: non nemici più forti o più deboli,<br>ma che richiedono <em>strategie completamente differenti</em> per essere affrontati.<br>Questo principio ha guidato la scelta di introdurre un <strong>tipo di nemico specifico per la sezione uffici</strong>, pensato per rompere il ritmo rispetto al corridoio e creare un'esperienza di combattimento distinta." },
       { label: "Implementazione in UE5", placeholder: false,
         text: "Sul lato tecnico ho implementato un sistema di <strong>Level Streaming</strong> con LV_Master come livello persistente e sublevels (LV_Zona_A, LV_Zona_B, LVL_Corridoio, LV_Bootstrap).<br><br>Ho realizzato un <strong>BP_StreamingTrigger</strong> con array LevelsToLoad/LevelsToUnload Instance Editable, e un <strong>sistema di porte bidirezionale</strong> tramite dot product per gestire il corretto ExitPoint in base alla direzione di attraversamento.<br><br>Il blockout è stato realizzato interamente in <strong>Modeling Mode di UE5.7</strong>.",
-        imgs: ["jseeds_b1.png", "jseeds_b2.png", "jseeds_b3.png", "jseeds_b4.png"], imgsLarge: true },
+        imgs: ["jseeds_b1.webp", "jseeds_b2.webp", "jseeds_b3.webp", "jseeds_b4.webp"], imgsLarge: true },
       { label: "Note", placeholder: false,
         text: "<em style='font-size:0.78rem; color:var(--text-muted);'>⚠ Per motivi di NDA non è possibile mostrare ulteriore materiale visivo o fornire dettagli aggiuntivi sul progetto.</em>" }
     ]
@@ -1297,7 +1301,7 @@ function buildGallery(gifs, labels, galleryVideo, galleryVideos) {
       // Real gif
       const item = document.createElement('div');
       item.className = 'gif-item';
-      item.innerHTML = `<img src="${src}" alt="${labels[i] || ''}">`;
+      item.innerHTML = `<img loading="lazy" decoding="async" src="${src}" alt="${labels[i] || ''}">`;
       gallery.appendChild(item);
     } else {
       // Placeholder
@@ -1336,19 +1340,19 @@ function openModal(i, keepScroll) {
       if (ins.carousel) {
         const imgs = ins.carousel;
         const doubled = [...imgs, ...imgs];
-        content += `<div class="modal-carousel-wrap"><div class="modal-carousel-track">${doubled.map(src => `<img class="modal-carousel-img" src="${src}" alt="">`).join('')}</div></div>`;
+        content += `<div class="modal-carousel-wrap"><div class="modal-carousel-track">${doubled.map(src => `<img loading="lazy" decoding="async" class="modal-carousel-img" src="${src}" alt="">`).join('')}</div></div>`;
       }
       if (ins.img) {
-        content += `<img src="${ins.img}" alt="${ins.label}" class="reveal-img" style="width:100%; margin-top:1.2rem; border:1px solid var(--border-light); display:block;">`;
+        content += `<img loading="lazy" decoding="async" src="${ins.img}" alt="${ins.label}" class="reveal-img" style="width:100%; margin-top:1.2rem; border:1px solid var(--border-light); display:block;">`;
       }
       if (ins.imgs) {
         if (ins.imgsLarge) {
           content += ins.imgs.map(src =>
-            `<img src="${src}" alt="" class="reveal-img jseeds-img">`
+            `<img loading="lazy" decoding="async" src="${src}" alt="" class="reveal-img jseeds-img">`
           ).join('');
         } else {
           content += `<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(${ins.imgsMin || 220}px, 1fr)); gap:8px; margin-top:1.2rem;">` +
-            ins.imgs.map(src => `<img src="${src}" alt="" class="reveal-img" style="width:100%; border:1px solid var(--border-light); display:block;">`).join('') +
+            ins.imgs.map(src => `<img loading="lazy" decoding="async" src="${src}" alt="" class="reveal-img" style="width:100%; border:1px solid var(--border-light); display:block;">`).join('') +
             `</div>`;
         }
       }
