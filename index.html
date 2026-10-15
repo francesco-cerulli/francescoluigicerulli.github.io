@@ -241,6 +241,12 @@
   .btn-secondary:hover { background: color-mix(in srgb, var(--fill) 100%, var(--text) 6%); }
   .btn svg { width: 16px; height: 16px; }
 
+  .worked-with { margin-top: 48px; padding-top: 22px; border-top: 0.5px solid var(--separator); max-width: 720px; }
+  .ww-label { display: block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+  .ww-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 28px; }
+  .ww-list li { font-size: 1.12rem; font-weight: 600; letter-spacing: -0.02em; color: var(--text-mid); transition: color 0.2s; }
+  .ww-list li:hover { color: var(--text); }
+
   /* ── SECTIONS ── */
   section { scroll-margin-top: 90px; }
   .section-header {
@@ -641,10 +647,14 @@
       <a class="btn btn-secondary" href="https://www.linkedin.com/in/francesco-luigi-cerulli-013477348/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn btn-secondary" href="#projects" data-i18n="ctaWork">Guarda i progetti</a>
     </div>
-    <div class="hero-stats rise d4">
-      <div class="stat"><div class="stat-num">1</div><div class="stat-label" data-i18n="statShipped">Gioco pubblicato</div></div>
-      <div class="stat"><div class="stat-num">2</div><div class="stat-label" data-i18n="statStudios">Studi di sviluppo</div></div>
-      <div class="stat"><div class="stat-num">3</div><div class="stat-label" data-i18n="statQA">Giochi testati</div></div>
+    <div class="worked-with rise d4">
+      <span class="ww-label" data-i18n="wwLabel">Ho lavorato con</span>
+      <ul class="ww-list">
+        <li>Leonardo Interactive</li>
+        <li>Trinity Team</li>
+        <li>JSeeds</li>
+        <li>Tambù Digital</li>
+      </ul>
     </div>
   </section>
 
@@ -1055,7 +1065,7 @@ const I18N = {
     role: "Ruolo", genre: "Genere", year: "Anno", pro: "🏢 Collaborazione professionale",
     heroEyebrow: "Game & Level Designer · Disponibile da subito",
     ctaMail: "Scrivimi", ctaWork: "Guarda i progetti",
-    statShipped: "Gioco pubblicato", statStudios: "Studi di sviluppo", statQA: "Giochi testati",
+    wwLabel: "Ho lavorato con",
     secExp: "Esperienza in studio", secExpCount: "Unreal Engine 5 · Unity",
     secProduct: "Il mio prodotto", secProductCount: "Design · Sviluppo · Pubblicazione", secPersonal: "School & Jam Projects",
     pumpyDesc: "L'app che ti dice dove e quando fare il pieno: i prezzi di tutti i distributori d'Italia, aggiornati ogni giorno, con la tendenza della tua zona.",
@@ -1079,7 +1089,7 @@ const I18N = {
     role: "Role", genre: "Genre", year: "Year", pro: "🏢 Professional collaboration",
     heroEyebrow: "Game & Level Designer · Available now",
     ctaMail: "Email me", ctaWork: "See my work",
-    statShipped: "Published game", statStudios: "Game studios", statQA: "Games tested",
+    wwLabel: "Worked with",
     secExp: "Studio experience", secExpCount: "Unreal Engine 5 · Unity",
     secProduct: "My product", secProductCount: "Design · Development · Launch", secPersonal: "School & Jam Projects",
     pumpyDesc: "The app that tells you where and when to fill up: prices for every fuel station in Italy, updated daily, with the trend in your area.",
