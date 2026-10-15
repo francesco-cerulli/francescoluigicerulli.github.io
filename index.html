@@ -917,6 +917,12 @@ const projects = [
     engine: "Unreal Engine 5", year: "2025–2026", indie: false,
     gifs: [], gifLabels: [],
     galleryVideos: [],
+    galleryImages: [
+      { src: "jseeds_b1.webp", label: "Blockout · UE5.7" },
+      { src: "jseeds_b2.webp", label: "Blockout · UE5.7" },
+      { src: "jseeds_b3.webp", label: "Blockout · UE5.7" },
+      { src: "jseeds_b4.webp", label: "Blockout · UE5.7" }
+    ],
     insights: [
       { label: "Il progetto", placeholder: false,
         text: "Progetto TBA sviluppato internamente da JSeeds: un TPS single-player in Unreal Engine 5.7. Sono uno dei primi designer entrati nel team, lavorando a stretto contatto con il Game Director fin dalle prime fasi di produzione." },
@@ -925,8 +931,7 @@ const projects = [
       { label: "Orthogonal Design", placeholder: false,
         text: "Durante la fase di design dei nemici mi sono confrontato con il concetto di <strong>Orthogonal Unit Differentiation</strong> di Keith Burgun: ogni tipo di nemico deve avere comportamenti e debolezze fondamentalmente diversi tra loro: non nemici più forti o più deboli,<br>ma che richiedono <em>strategie completamente differenti</em> per essere affrontati.<br>Questo principio ha guidato la scelta di introdurre un <strong>tipo di nemico specifico per la sezione uffici</strong>, pensato per rompere il ritmo rispetto al corridoio e creare un'esperienza di combattimento distinta." },
       { label: "Implementazione in UE5", placeholder: false,
-        text: "Sul lato tecnico ho implementato un sistema di <strong>Level Streaming</strong> con LV_Master come livello persistente e sublevels (LV_Zona_A, LV_Zona_B, LVL_Corridoio, LV_Bootstrap).<br><br>Ho realizzato un <strong>BP_StreamingTrigger</strong> con array LevelsToLoad/LevelsToUnload Instance Editable, e un <strong>sistema di porte bidirezionale</strong> tramite dot product per gestire il corretto ExitPoint in base alla direzione di attraversamento.<br><br>Il blockout è stato realizzato interamente in <strong>Modeling Mode di UE5.7</strong>.",
-        imgs: ["jseeds_b1.webp", "jseeds_b2.webp", "jseeds_b3.webp", "jseeds_b4.webp"], imgsLarge: true },
+        text: "Sul lato tecnico ho implementato un sistema di <strong>Level Streaming</strong> con LV_Master come livello persistente e sublevels (LV_Zona_A, LV_Zona_B, LVL_Corridoio, LV_Bootstrap).<br><br>Ho realizzato un <strong>BP_StreamingTrigger</strong> con array LevelsToLoad/LevelsToUnload Instance Editable, e un <strong>sistema di porte bidirezionale</strong> tramite dot product per gestire il corretto ExitPoint in base alla direzione di attraversamento.<br><br>Il blockout è stato realizzato interamente in <strong>Modeling Mode di UE5.7</strong>." },
       { label: "Note", placeholder: false,
         text: "<em style='font-size:0.78rem; color:var(--text-muted);'>⚠ Per motivi di NDA non è possibile mostrare ulteriore materiale visivo o fornire dettagli aggiuntivi sul progetto.</em>" }
     ]
