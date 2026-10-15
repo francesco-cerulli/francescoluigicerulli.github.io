@@ -358,6 +358,31 @@
   .product-card:hover .phone.p3 { transform: rotate(9deg) translateX(8px); }
   .product-card:hover { transform: translateY(-3px); }
 
+  /* ── QA / TESTING ── */
+  .qa-intro { max-width: 720px; font-size: 1.06rem; line-height: 1.6; color: var(--text-mid); margin: -6px 0 22px; }
+  .qa-intro strong { color: var(--text); font-weight: 600; }
+  .qa-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .qa-card { text-decoration: none; color: inherit; display: block; }
+  .qa-media { aspect-ratio: 460/215; background: linear-gradient(135deg, var(--surface2), var(--fill)); position: relative; overflow: hidden; }
+  .qa-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--spring); }
+  .qa-card:hover .qa-media img { transform: scale(1.04); }
+  .qa-media .qa-fallback {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; font-weight: 700; letter-spacing: -0.03em; color: var(--text-mid);
+  }
+  .qa-media img + .qa-fallback { display: none; }
+  .qa-media.noimg .qa-fallback { display: flex; }
+  .qa-steam {
+    flex-shrink: 0; padding: 7px 12px; border-radius: 999px; background: var(--fill);
+    font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+  }
+  .qa-card:hover .qa-steam { background: var(--accent); color: #fff; }
+  .qa-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
+  .qa-point { background: var(--surface); border-radius: var(--r-lg); padding: 18px 20px; box-shadow: var(--shadow-sm); }
+  .qa-point b { display: block; font-size: 0.98rem; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 4px; }
+  .qa-point span { font-size: 0.9rem; color: var(--text-mid); line-height: 1.5; }
+
   /* ── TIMELINE (grouped list) ── */
   .path-title { font-size: 1.12rem; font-weight: 700; letter-spacing: -0.025em; margin: 34px 0 12px; }
   .path-list { background: var(--surface2); border-radius: var(--r-lg); overflow: hidden; }
@@ -561,6 +586,7 @@
   @media (max-width: 900px) {
     .exp-grid { grid-template-columns: 1fr; }
     .product-card { grid-template-columns: 1fr; }
+    .qa-grid, .qa-points { grid-template-columns: 1fr; }
     .product-phones { min-height: 380px; }
     .shelf { grid-auto-columns: 78%; }
     .shelf-head-actions { display: none; }
@@ -618,7 +644,7 @@
     <div class="hero-stats rise d4">
       <div class="stat"><div class="stat-num">1</div><div class="stat-label" data-i18n="statShipped">Gioco pubblicato</div></div>
       <div class="stat"><div class="stat-num">2</div><div class="stat-label" data-i18n="statStudios">Studi di sviluppo</div></div>
-      <div class="stat"><div class="stat-num">3</div><div class="stat-label" data-i18n="statQA">Collaborazioni QA</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label" data-i18n="statQA">Giochi testati</div></div>
     </div>
   </section>
 
@@ -728,6 +754,54 @@
 
   </section>
 
+  <section id="qa">
+    <div class="section-header reveal">
+      <h2 class="section-label">QA &amp; Playtesting</h2>
+      <span class="section-count" data-i18n="qaCount">3 giochi · Tambù Digital</span>
+    </div>
+    <p class="qa-intro reveal" data-i18n-html="qaIntro">Come tester freelance ho provato le build pre-release di tre giochi pubblicati da <strong>Tambù Digital</strong>, prima dell'uscita su Steam. Per ogni sessione ho consegnato al team un report strutturato: bug con passi per riprodurli, risultato atteso e ottenuto, e un'analisi di design su tutorial, interfaccia e ritmo di gioco, guardando l'esperienza con gli occhi di un giocatore e di un designer.</p>
+    <div class="qa-grid">
+      <a class="card qa-card reveal" href="https://store.steampowered.com/app/4054790/" target="_blank" rel="noopener" aria-label="Beatrix su Steam">
+        <div class="qa-media"><img loading="lazy" decoding="async" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4054790/87bf9b1cb2e397caa15abeca48e443789d42fcdb/header.jpg" alt="Beatrix" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add('noimg');this.remove()"><span class="qa-fallback">Beatrix</span></div>
+        <div class="card-body">
+          <div>
+            <div class="card-role">Roguelike · Board builder</div>
+            <h3 class="card-title">Beatrix</h3>
+            <div class="card-detail">Tambù Digital</div>
+          </div>
+          <span class="qa-steam">Steam ↗</span>
+        </div>
+      </a>
+      <a class="card qa-card reveal" href="https://store.steampowered.com/app/3753160/" target="_blank" rel="noopener" aria-label="Drag'N Dungeon su Steam">
+        <div class="qa-media"><img loading="lazy" decoding="async" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3753150/b86eae621831ed3459626d7842e1cbeef2c30a31/header.jpg" alt="Drag'N Dungeon" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add('noimg');this.remove()"><span class="qa-fallback">Drag'N Dungeon</span></div>
+        <div class="card-body">
+          <div>
+            <div class="card-role">Strategy RPG · Voxel</div>
+            <h3 class="card-title">Drag'N Dungeon</h3>
+            <div class="card-detail">Demon Girl · pub. Tambù Digital</div>
+          </div>
+          <span class="qa-steam">Steam ↗</span>
+        </div>
+      </a>
+      <a class="card qa-card reveal" href="https://store.steampowered.com/app/4588320/Lostbound/" target="_blank" rel="noopener" aria-label="Lostbound su Steam">
+        <div class="qa-media"><img loading="lazy" decoding="async" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4588320/c8391418de5f2d62ab716cf88992aaa528211a3b/header.jpg" alt="Lostbound" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add('noimg');this.remove()"><span class="qa-fallback">Lostbound</span></div>
+        <div class="card-body">
+          <div>
+            <div class="card-role">Roguelite · Action RPG</div>
+            <h3 class="card-title">Lostbound</h3>
+            <div class="card-detail">Tenkarider · pub. Tambù Digital</div>
+          </div>
+          <span class="qa-steam">Steam ↗</span>
+        </div>
+      </a>
+    </div>
+    <div class="qa-points">
+      <div class="qa-point reveal"><b data-i18n="qa1t">Bug reporting</b><span data-i18n="qa1">Passi di riproduzione, atteso e ottenuto, gravità. Ad esempio un menu del tutorial che non si visualizzava correttamente in 4K.</span></div>
+      <div class="qa-point reveal"><b data-i18n="qa2t">Feedback di design</b><span data-i18n="qa2">Chiarezza del tutorial, leggibilità della UI, profondità strategica degli scontri e problemi di camera tra un'area e l'altra.</span></div>
+      <div class="qa-point reveal"><b data-i18n="qa3t">Test su più build</b><span data-i18n="qa3">Più ondate di test sullo stesso titolo, confrontando ogni versione con la precedente per verificare le correzioni.</span></div>
+    </div>
+  </section>
+
   <section id="about">
     <div class="section-header reveal"><h2 class="section-label">About</h2></div>
     <div class="about-card reveal">
@@ -758,7 +832,7 @@
         <div class="path-list">
           <div class="path-item"><div><div class="path-main">JSeeds</div><div class="path-sub">Level Designer · UE5</div></div><div class="path-when">2025 – 2026</div></div>
           <div class="path-item"><div><div class="path-main">Trinity Team</div><div class="path-sub">Design &amp; Programming · Hell Architect: Survivors</div></div><div class="path-when">2025</div></div>
-          <div class="path-item"><div><div class="path-main">PowerUp Games · Tambu Digital · Italian Game Factory</div><div class="path-sub">QA Tester</div></div></div>
+          <div class="path-item"><div><div class="path-main">Tambù Digital</div><div class="path-sub" data-i18n="pathQA">QA Tester freelance · Beatrix, Drag'N Dungeon, Lostbound</div></div><div class="path-when">2026</div></div>
           <div class="path-item"><div><div class="path-main">ITS Academy Adriano Olivetti</div><div class="path-sub" data-i18n="pathITS">Game Programmer · 105/110</div></div><div class="path-when">2026</div></div>
         </div>
       </div>
@@ -981,12 +1055,18 @@ const I18N = {
     role: "Ruolo", genre: "Genere", year: "Anno", pro: "🏢 Collaborazione professionale",
     heroEyebrow: "Game & Level Designer · Disponibile da subito",
     ctaMail: "Scrivimi", ctaWork: "Guarda i progetti",
-    statShipped: "Gioco pubblicato", statStudios: "Studi di sviluppo", statQA: "Collaborazioni QA",
+    statShipped: "Gioco pubblicato", statStudios: "Studi di sviluppo", statQA: "Giochi testati",
     secExp: "Esperienza in studio", secExpCount: "Unreal Engine 5 · Unity",
     secProduct: "Il mio prodotto", secProductCount: "Design · Sviluppo · Pubblicazione", secPersonal: "Progetti di gioco",
     pumpyDesc: "L'app che ti dice dove e quando fare il pieno: i prezzi di tutti i distributori d'Italia, aggiornati ogni giorno, con la tendenza della tua zona.",
     pumpyOpen: "Scopri il progetto", visit: "Visita pumpy.it",
     pathTitle: "Percorso", pathITS: "Game Programmer · 105/110",
+    pathQA: "QA Tester freelance · Beatrix, Drag'N Dungeon, Lostbound",
+    qaCount: "3 giochi · Tambù Digital",
+    qaIntro: "Come tester freelance ho provato le build pre-release di tre giochi pubblicati da <strong>Tambù Digital</strong>, prima dell'uscita su Steam. Per ogni sessione ho consegnato al team un report strutturato: bug con passi per riprodurli, risultato atteso e ottenuto, e un'analisi di design su tutorial, interfaccia e ritmo di gioco, guardando l'esperienza con gli occhi di un giocatore e di un designer.",
+    qa1t: "Bug reporting", qa1: "Passi di riproduzione, atteso e ottenuto, gravità. Ad esempio un menu del tutorial che non si visualizzava correttamente in 4K.",
+    qa2t: "Feedback di design", qa2: "Chiarezza del tutorial, leggibilità della UI, profondità strategica degli scontri e problemi di camera tra un'area e l'altra.",
+    qa3t: "Test su più build", qa3: "Più ondate di test sullo stesso titolo, confrontando ogni versione con la precedente per verificare le correzioni.",
     footerRole: "Game & Level Designer — Modena · Remoto"
   },
   en: {
@@ -999,12 +1079,18 @@ const I18N = {
     role: "Role", genre: "Genre", year: "Year", pro: "🏢 Professional collaboration",
     heroEyebrow: "Game & Level Designer · Available now",
     ctaMail: "Email me", ctaWork: "See my work",
-    statShipped: "Published game", statStudios: "Game studios", statQA: "QA collaborations",
+    statShipped: "Published game", statStudios: "Game studios", statQA: "Games tested",
     secExp: "Studio experience", secExpCount: "Unreal Engine 5 · Unity",
     secProduct: "My product", secProductCount: "Design · Development · Launch", secPersonal: "Game projects",
     pumpyDesc: "The app that tells you where and when to fill up: prices for every fuel station in Italy, updated daily, with the trend in your area.",
     pumpyOpen: "Explore the project", visit: "Visit pumpy.it",
     pathTitle: "Background", pathITS: "Game Programmer · 105/110",
+    pathQA: "Freelance QA Tester · Beatrix, Drag'N Dungeon, Lostbound",
+    qaCount: "3 games · Tambù Digital",
+    qaIntro: "As a freelance tester I played pre-release builds of three games published by <strong>Tambù Digital</strong>, ahead of their Steam launch. After each session I delivered a structured report to the team: bugs with repro steps and expected vs actual results, plus a design review of the tutorial, interface and pacing, looking at the experience as both a player and a designer.",
+    qa1t: "Bug reporting", qa1: "Repro steps, expected vs actual, severity. For example a tutorial menu that didn't display correctly in 4K.",
+    qa2t: "Design feedback", qa2: "Tutorial clarity, UI readability, strategic depth of combat and camera issues between areas.",
+    qa3t: "Multi-build testing", qa3: "Several test waves on the same title, comparing each build with the previous one to verify fixes.",
     footerRole: "Game & Level Designer — Modena · Remote"
   }
 };
@@ -1065,6 +1151,7 @@ function t(key) { return (I18N[LANG] && I18N[LANG][key]) || I18N.it[key]; }
 function applyLang() {
   document.documentElement.lang = LANG;
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
   document.querySelectorAll('[data-i18n-title]').forEach(el => { el.title = t(el.dataset.i18nTitle); });
   document.querySelectorAll('.lang-toggle').forEach(btn => btn.classList.toggle('en', LANG === 'en'));
   document.querySelectorAll('.lang-toggle [data-l]').forEach(el => el.classList.toggle('active', el.dataset.l === LANG));
