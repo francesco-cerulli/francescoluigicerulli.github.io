@@ -207,6 +207,20 @@
   .stat-num { font-size: 2.1rem; font-weight: 700; line-height: 1; letter-spacing: -0.04em; }
   .stat-label { margin-top: 6px; font-size: 0.8rem; color: var(--text-mid); letter-spacing: -0.01em; }
 
+  .hero-cta { display: flex; gap: 10px; margin-top: 32px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 20px; border-radius: 999px;
+    font-size: 0.95rem; font-weight: 600; text-decoration: none; letter-spacing: -0.01em;
+    transition: transform 0.35s var(--spring), opacity 0.2s, background 0.2s;
+  }
+  .btn:active { transform: scale(0.95); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-secondary { background: var(--fill); color: var(--text); }
+  .btn-secondary:hover { background: color-mix(in srgb, var(--fill) 100%, var(--text) 6%); }
+  .btn svg { width: 16px; height: 16px; }
+
   /* ── SECTIONS ── */
   section { scroll-margin-top: 90px; }
   .section-header {
@@ -282,6 +296,58 @@
   .shelf .card { scroll-snap-align: start; }
   .shelf .card-media { aspect-ratio: 4/3; }
 
+  /* ── PRODUCT CARD (Pumpy) ── */
+  .product-card {
+    display: grid; grid-template-columns: 1fr 1.15fr; align-items: center;
+    background: linear-gradient(150deg, #12b07c 0%, #0E9F6E 45%, #0a7a55 100%);
+    color: #fff; min-height: 440px;
+  }
+  .product-copy { padding: clamp(28px, 4.5vw, 52px); position: relative; z-index: 2; }
+  .product-brand { display: flex; align-items: center; gap: 12px; }
+  .product-brand img { width: 52px; height: 52px; border-radius: 14px; box-shadow: 0 6px 18px rgba(0,0,0,0.18); background: #fff; }
+  .product-brand span { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.85; }
+  .product-title { margin-top: 18px; font-size: clamp(2.2rem, 4.4vw, 3.4rem); font-weight: 700; letter-spacing: -0.045em; line-height: 1; }
+  .product-desc { margin-top: 14px; font-size: 1.05rem; line-height: 1.5; opacity: 0.92; max-width: 420px; }
+  .product-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .product-tags span {
+    padding: 6px 12px; border-radius: 999px; font-size: 0.78rem; font-weight: 600;
+    background: rgba(255,255,255,0.16);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  }
+  .product-open {
+    margin-top: 26px; display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 18px; border-radius: 999px; background: #fff; color: #0B1F17;
+    font-size: 0.92rem; font-weight: 600;
+    transition: transform 0.4s var(--spring);
+  }
+  .product-card:hover .product-open { transform: translateX(4px); }
+  .product-phones { position: relative; height: 100%; min-height: 440px; overflow: hidden; }
+  .phone {
+    position: absolute; width: 30%; aspect-ratio: 1/2;
+    border-radius: 26px; overflow: hidden;
+    border: 5px solid #0B1F17; background: #0B1F17;
+    box-shadow: 0 24px 50px rgba(0,0,0,0.32);
+    transition: transform 0.9s var(--spring);
+  }
+  .phone img { width: 100%; height: 100%; object-fit: cover; }
+  .phone.p1 { left: 10%; top: 17%; transform: rotate(-7deg); }
+  .phone.p2 { left: 35%; top: 8%;  z-index: 2; }
+  .phone.p3 { left: 60%; top: 17%; transform: rotate(7deg); }
+  .product-card:hover .phone.p1 { transform: rotate(-9deg) translateX(-8px); }
+  .product-card:hover .phone.p2 { transform: translateY(-8px); }
+  .product-card:hover .phone.p3 { transform: rotate(9deg) translateX(8px); }
+  .product-card:hover { transform: translateY(-3px); }
+
+  /* ── TIMELINE (grouped list) ── */
+  .path-title { font-size: 1.12rem; font-weight: 700; letter-spacing: -0.025em; margin: 34px 0 12px; }
+  .path-list { background: var(--surface2); border-radius: var(--r-lg); overflow: hidden; }
+  @media (prefers-color-scheme: dark) { .path-list { background: var(--surface2); } }
+  .path-item { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 14px 18px; position: relative; }
+  .path-item + .path-item::before { content: ''; position: absolute; top: 0; left: 18px; right: 0; height: 0.5px; background: var(--separator); }
+  .path-main { font-size: 0.96rem; font-weight: 600; letter-spacing: -0.015em; }
+  .path-sub { font-size: 0.86rem; color: var(--text-mid); margin-top: 2px; }
+  .path-when { font-size: 0.86rem; color: var(--text-muted); white-space: nowrap; }
+
   /* ── ABOUT ── */
   #about { padding-bottom: 40px; }
   .about-card {
@@ -313,6 +379,9 @@
   .skill-item:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
 
   /* ── FOOTER ── */
+  footer a { color: var(--text-mid); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  .footer-links { display: flex; gap: 18px; }
   footer {
     display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
     padding: 36px 0 calc(40px + env(safe-area-inset-bottom));
@@ -399,6 +468,8 @@
     background: #000; scroll-snap-align: start; box-shadow: var(--shadow-sm);
   }
   .gif-video-item.solo { width: 100%; max-width: 820px; }
+  .gif-item.phone-shot { width: 220px; aspect-ratio: 1/2; background: #0B1F17; border: 4px solid #0B1F17; border-radius: 26px; }
+  .gif-item.wide-shot { width: min(640px, 86vw); aspect-ratio: 16/9; }
   .gif-video-item video, .gif-item img { width: 100%; height: 100%; object-fit: cover; }
   .gif-video-label {
     position: absolute; left: 12px; bottom: 12px;
@@ -437,6 +508,15 @@
   }
   .meta-label { font-size: 0.92rem; color: var(--text-mid); white-space: nowrap; }
   .meta-value { font-size: 0.92rem; font-weight: 500; text-align: right; }
+  .meta-link {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin-top: 12px; padding: 13px 16px; border-radius: var(--r-md);
+    background: var(--accent); color: #fff; text-decoration: none;
+    font-size: 0.92rem; font-weight: 600;
+    transition: transform 0.35s var(--spring), opacity 0.2s;
+  }
+  .meta-link:hover { opacity: 0.88; }
+  .meta-link:active { transform: scale(0.97); }
   .meta-badge {
     margin-top: 12px; padding: 12px 16px; border-radius: var(--r-md);
     background: color-mix(in srgb, var(--accent) 12%, transparent);
@@ -461,6 +541,8 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .exp-grid { grid-template-columns: 1fr; }
+    .product-card { grid-template-columns: 1fr; }
+    .product-phones { min-height: 380px; }
     .shelf { grid-auto-columns: 78%; }
     .shelf-head-actions { display: none; }
     .about-card { grid-template-columns: 1fr; }
@@ -477,6 +559,9 @@
     .stat { min-width: 0; flex: 1; padding: 14px 16px; }
     .stat-num { font-size: 1.7rem; }
     .card-title { font-size: 1.25rem; }
+    .product-phones { min-height: 330px; }
+    .phone { border-radius: 20px; border-width: 4px; }
+    .path-item { flex-direction: column; align-items: flex-start; gap: 2px; }
     .modal-topbar, .modal-hero, .modal-head, .modal-body { padding-left: 16px; padding-right: 16px; }
     .gif-gallery-header { padding: 0 16px 12px; }
     .gif-gallery { padding: 0 16px 12px; scroll-padding: 0 16px; }
@@ -502,15 +587,20 @@
 <main class="wrap">
 
   <section class="hero">
-    <p class="hero-eyebrow rise">Game Designer &amp; Level Designer</p>
+    <p class="hero-eyebrow rise" data-i18n="heroEyebrow">Game &amp; Level Designer · Disponibile da subito</p>
     <h1 class="hero-name rise d1">Francesco<br><em>Luigi</em> Cerulli</h1>
     <p class="hero-desc rise d2" data-i18n="heroDesc">
       Progetto esperienze di gioco: dall'architettura dei livelli alla meccanica del gameplay. Ogni spazio racconta una storia.
     </p>
-    <div class="hero-stats rise d3">
-      <div class="stat"><div class="stat-num">5</div><div class="stat-label" data-i18n="statProjects">Progetti</div></div>
-      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Experience</div></div>
-      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Personal</div></div>
+    <div class="hero-cta rise d3">
+      <a class="btn btn-primary" href="mailto:francescocerulli77@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7l9 6 9-6"/></svg><span data-i18n="ctaMail">Scrivimi</span></a>
+      <a class="btn btn-secondary" href="https://www.linkedin.com/in/francesco-luigi-cerulli-013477348/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-secondary" href="#projects" data-i18n="ctaWork">Guarda i progetti</a>
+    </div>
+    <div class="hero-stats rise d4">
+      <div class="stat"><div class="stat-num">1</div><div class="stat-label" data-i18n="statShipped">Gioco pubblicato</div></div>
+      <div class="stat"><div class="stat-num">2</div><div class="stat-label" data-i18n="statStudios">Studi di sviluppo</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label" data-i18n="statQA">Collaborazioni QA</div></div>
     </div>
   </section>
 
@@ -518,8 +608,8 @@
 
     <!-- EXPERIENCE -->
     <div class="section-header reveal">
-      <h2 class="section-label">Experience</h2>
-      <span class="section-count">2 works</span>
+      <h2 class="section-label" data-i18n="secExp">Esperienza in studio</h2>
+      <span class="section-count" data-i18n="secExpCount">Unreal Engine 5 · Unity</span>
     </div>
 
     <div class="exp-grid">
@@ -550,9 +640,30 @@
       </article>
     </div>
 
+    <!-- OWN PRODUCT -->
+    <div class="section-header reveal">
+      <h2 class="section-label" data-i18n="secProduct">Il mio prodotto</h2>
+      <span class="section-count" data-i18n="secProductCount">Design · Sviluppo · Pubblicazione</span>
+    </div>
+
+    <article class="card product-card reveal" onclick="openModal(5)" tabindex="0" role="button" aria-label="Pumpy">
+      <div class="product-copy">
+        <div class="product-brand"><img src="pumpy_goccia.svg" alt="" width="52" height="52"><span>Pumpy Labs · 2026</span></div>
+        <h3 class="product-title">Pumpy</h3>
+        <p class="product-desc" data-i18n="pumpyDesc">L'app che ti dice dove e quando fare il pieno: i prezzi di tutti i distributori d'Italia, aggiornati ogni giorno, con la tendenza della tua zona.</p>
+        <div class="product-tags"><span>Product Design</span><span>UX / UI</span><span>Web · PWA</span><span>Android</span><span>Python</span></div>
+        <span class="product-open"><span data-i18n="pumpyOpen">Scopri il progetto</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
+      </div>
+      <div class="product-phones" aria-hidden="true">
+        <div class="phone p1"><img decoding="async" src="pumpy_mappa.webp" alt=""></div>
+        <div class="phone p2"><img decoding="async" src="pumpy_verdetto.webp" alt=""></div>
+        <div class="phone p3"><img decoding="async" src="pumpy_distributore.webp" alt=""></div>
+      </div>
+    </article>
+
     <!-- PERSONAL PROJECTS -->
     <div class="section-header reveal">
-      <h2 class="section-label">Personal Projects</h2>
+      <h2 class="section-label" data-i18n="secPersonal">Progetti di gioco</h2>
       <div class="shelf-head-actions">
         <button class="shelf-btn" data-dir="-1" aria-label="Indietro"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
         <button class="shelf-btn" data-dir="1" aria-label="Avanti"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
@@ -612,14 +723,25 @@
         <p class="about-text" data-i18n="about2">Dal progettare sistemi di gameplay alla costruzione di spazi tridimensionali percorribili, il mio approccio unisce logica architetturale e narrazione ambientale: ogni corridoio ha un ritmo, ogni arena una tensione.</p>
         <p class="about-text" data-i18n="about3">Ho lavorato su titoli indipendenti e in studio, sviluppando competenze trasversali tra design e programmazione su Unity e Unreal Engine 5.</p>
         <div class="skills-grid">
-          <span class="skill-item">Game Design</span>
           <span class="skill-item">Level Design</span>
-          <span class="skill-item">Gameplay Programming</span>
+          <span class="skill-item">Game Design</span>
           <span class="skill-item">Systems Design</span>
-          <span class="skill-item">Unreal Engine 5</span>
-          <span class="skill-item">Unity</span>
+          <span class="skill-item">Unreal Engine 5 · Blueprint</span>
+          <span class="skill-item">Unity · C#</span>
+          <span class="skill-item">C++</span>
           <span class="skill-item">Prototyping</span>
-          <span class="skill-item">World Building</span>
+          <span class="skill-item">QA &amp; Playtesting</span>
+          <span class="skill-item">UX / UI</span>
+          <span class="skill-item">HTML · CSS · JS</span>
+          <span class="skill-item">Python</span>
+          <span class="skill-item">Miro · Blender</span>
+        </div>
+        <h4 class="path-title" data-i18n="pathTitle">Percorso</h4>
+        <div class="path-list">
+          <div class="path-item"><div><div class="path-main">JSeeds</div><div class="path-sub">Level Designer · UE5</div></div><div class="path-when">2025 – 2026</div></div>
+          <div class="path-item"><div><div class="path-main">Trinity Team</div><div class="path-sub">Design &amp; Programming · Hell Architect: Survivors</div></div><div class="path-when">2025</div></div>
+          <div class="path-item"><div><div class="path-main">PowerUp Games · Tambu Digital · Italian Game Factory</div><div class="path-sub">QA Tester</div></div></div>
+          <div class="path-item"><div><div class="path-main">ITS Academy Adriano Olivetti</div><div class="path-sub" data-i18n="pathITS">Game Programmer · 105/110</div></div><div class="path-when">2026</div></div>
         </div>
       </div>
     </div>
@@ -627,7 +749,8 @@
 
   <footer>
     <span>© 2026 Francesco Luigi Cerulli</span>
-    <span>Game Designer &amp; Level Designer — Modena</span>
+    <span class="footer-links"><a href="mailto:francescocerulli77@gmail.com">Email</a><a href="https://www.linkedin.com/in/francesco-luigi-cerulli-013477348/" target="_blank" rel="noopener">LinkedIn</a><a href="https://pumpy.it" target="_blank" rel="noopener">Pumpy</a></span>
+    <span data-i18n="footerRole">Game &amp; Level Designer — Modena · Remoto</span>
   </footer>
 </main>
 </div>
@@ -789,6 +912,36 @@ const projects = [
       { label: "Note", placeholder: false,
         text: "<em style='font-size:0.78rem; color:var(--text-muted);'>⚠ Per motivi di NDA non è possibile mostrare ulteriore materiale visivo o fornire dettagli aggiuntivi sul progetto.</em>" }
     ]
+  },
+  {
+    name: "Pumpy",
+    kicker: "Product Design · Sviluppo",
+    titleHTML: "Pumpy",
+    img: "pumpy_desktop.webp",
+    studio: "Pumpy Labs", genre: "App · Mobilità",
+    engine: "Web · Python · Android", year: "2026", indie: true,
+    link: "https://pumpy.it",
+    gifs: [], gifLabels: [],
+    galleryImages: [
+      { src: "pumpy_verdetto.webp", label: "Verdetto", phone: true },
+      { src: "pumpy_mappa.webp", label: "Mappa", phone: true },
+      { src: "pumpy_distributore.webp", label: "Distributore", phone: true },
+      { src: "pumpy_mappa_dark.webp", label: "Dark mode", phone: true },
+      { src: "pumpy_menu.webp", label: "Menu", phone: true }
+    ],
+    insights: [
+      { label: "Il progetto", placeholder: false,
+        text: "Pumpy è la mia app per scegliere <strong>dove e quando fare il pieno</strong>. Mostra su una mappa i prezzi di benzina, gasolio, GPL e metano di tutti i distributori d'Italia, aggiornati ogni giorno con i dati ufficiali del Ministero (MIMIT), insieme alla variazione di ogni prezzo e alla tendenza della zona." },
+      { label: "Dal pitch al prodotto", placeholder: false,
+        text: "Il progetto è nato come <em>Pieno Giusto</em>. Dopo un pitch ho raccolto i feedback e ho ripensato il prodotto: tolta la gamification, scelta una direzione artistica minimal in stile Apple, un nome più internazionale e un'identità visiva nuova, con un logo a goccia in cui la scritta <strong>pumpy</strong> si trasforma all'avvio dell'app." },
+      { label: "UX: una domanda, una risposta", placeholder: false,
+        text: "L'interfaccia è costruita attorno a una sola domanda: <em>faccio il pieno oggi o aspetto?</em> La schermata principale dà un verdetto chiaro, la mappa evidenzia in verde il 25% dei distributori più economici e in rosso quello più caro, e la scheda di ogni impianto spiega di quanto è cambiato il prezzo e da quando. Tema chiaro e scuro, pensata prima di tutto per il telefono.",
+        imgs: ["pumpy_verdetto.webp", "pumpy_distributore.webp", "pumpy_mappa_dark.webp"], imgsMin: 160 },
+      { label: "Dati affidabili", placeholder: false,
+        text: "Una pipeline in <strong>Python</strong> scarica ogni giorno i dati del Ministero, li unisce e calcola le variazioni di prezzo; <strong>GitHub Actions</strong> la esegue in automatico ogni ora durante il giorno. Ho definito regole per scartare i valori impossibili e per segnalare come <em>da verificare</em> i prezzi sospetti o non aggiornati da più di 8 giorni, così la classifica mostra solo dati credibili." },
+      { label: "Pubblicazione", placeholder: false,
+        text: "Il sito è online su <strong>pumpy.it</strong> come web app installabile. La versione Android è in test chiuso sul <strong>Google Play Store</strong> con l'account sviluppatore Pumpy Labs; il supporto ad Android Auto è il passo successivo." }
+    ]
   }
 ];
 
@@ -802,7 +955,16 @@ const I18N = {
     about1: "Sono Francesco Luigi Cerulli, Game Designer e Level Designer con esperienza nel creare esperienze di gioco coerenti e coinvolgenti.",
     about2: "Dal progettare sistemi di gameplay alla costruzione di spazi tridimensionali percorribili, il mio approccio unisce logica architetturale e narrazione ambientale: ogni corridoio ha un ritmo, ogni arena una tensione.",
     about3: "Ho lavorato su titoli indipendenti e in studio, sviluppando competenze trasversali tra design e programmazione su Unity e Unreal Engine 5.",
-    role: "Ruolo", genre: "Genere", year: "Anno", pro: "🏢 Collaborazione professionale"
+    role: "Ruolo", genre: "Genere", year: "Anno", pro: "🏢 Collaborazione professionale",
+    heroEyebrow: "Game & Level Designer · Disponibile da subito",
+    ctaMail: "Scrivimi", ctaWork: "Guarda i progetti",
+    statShipped: "Gioco pubblicato", statStudios: "Studi di sviluppo", statQA: "Collaborazioni QA",
+    secExp: "Esperienza in studio", secExpCount: "Unreal Engine 5 · Unity",
+    secProduct: "Il mio prodotto", secProductCount: "Design · Sviluppo · Pubblicazione", secPersonal: "Progetti di gioco",
+    pumpyDesc: "L'app che ti dice dove e quando fare il pieno: i prezzi di tutti i distributori d'Italia, aggiornati ogni giorno, con la tendenza della tua zona.",
+    pumpyOpen: "Scopri il progetto", visit: "Visita pumpy.it",
+    pathTitle: "Percorso", pathITS: "Game Programmer · 105/110",
+    footerRole: "Game & Level Designer — Modena · Remoto"
   },
   en: {
     navLinkedin: "LinkedIn profile", navWork: "Work", navContact: "Contact",
@@ -811,7 +973,16 @@ const I18N = {
     about1: "I'm Francesco Luigi Cerulli, a Game Designer and Level Designer with experience in crafting coherent, engaging game experiences.",
     about2: "From designing gameplay systems to building traversable 3D spaces, my approach combines architectural logic and environmental storytelling: every corridor has a rhythm, every arena a tension.",
     about3: "I've worked on indie and studio titles, building cross-disciplinary skills in design and programming with Unity and Unreal Engine 5.",
-    role: "Role", genre: "Genre", year: "Year", pro: "🏢 Professional collaboration"
+    role: "Role", genre: "Genre", year: "Year", pro: "🏢 Professional collaboration",
+    heroEyebrow: "Game & Level Designer · Available now",
+    ctaMail: "Email me", ctaWork: "See my work",
+    statShipped: "Published game", statStudios: "Game studios", statQA: "QA collaborations",
+    secExp: "Studio experience", secExpCount: "Unreal Engine 5 · Unity",
+    secProduct: "My product", secProductCount: "Design · Development · Launch", secPersonal: "Game projects",
+    pumpyDesc: "The app that tells you where and when to fill up: prices for every fuel station in Italy, updated daily, with the trend in your area.",
+    pumpyOpen: "Explore the project", visit: "Visit pumpy.it",
+    pathTitle: "Background", pathITS: "Game Programmer · 105/110",
+    footerRole: "Game & Level Designer — Modena · Remote"
   }
 };
 
@@ -840,6 +1011,13 @@ const INSIGHTS_EN = {
     ["The project", "Tyranny of Ghost is an academic project in which I was the <strong>Concept Level Designer</strong>, in charge of designing the main flow of the gameplay experience."],
     ["Concept", "The labyrinthine setting is inspired by the layout of the <em>Borgo Medievale in Turin</em>: it shaped how the spaces are traversed and the interactions tied to repairing the Statue, the cornerstone of the whole experience."],
     ["Flow", "I designed the player's main flow through the level, defining the key interaction points: from the Fountain to the Mill, up to the Villa, each tied to a specific mechanic in normal or ghost mode."]
+  ],
+  "Pumpy": [
+    ["The project", "Pumpy is my app for deciding <strong>where and when to fill up</strong>. It maps petrol, diesel, LPG and CNG prices for every fuel station in Italy, updated daily from the official Ministry data (MIMIT), together with each price's latest change and the local trend."],
+    ["From pitch to product", "The project started as <em>Pieno Giusto</em>. After pitching it I gathered feedback and rethought the product: I dropped the gamification and chose a minimal, Apple-style art direction, a more international name and a new visual identity, with a drop logo that the <strong>pumpy</strong> wordmark morphs into when the app starts."],
+    ["UX: one question, one answer", "The interface is built around a single question: <em>should I fill up today or wait?</em> The home screen gives a clear verdict, the map highlights the cheapest 25% of stations in green and the most expensive in red, and each station's card explains how much the price changed and since when. Light and dark themes, designed mobile-first."],
+    ["Reliable data", "A <strong>Python</strong> pipeline downloads the Ministry data every day, merges it and computes price changes; <strong>GitHub Actions</strong> runs it automatically every hour during the day. I defined rules that discard impossible values and flag suspicious prices, or ones not updated for more than 8 days, as <em>to be verified</em>, so the ranking only shows credible data."],
+    ["Publishing", "The site is live at <strong>pumpy.it</strong> as an installable web app. The Android version is in closed testing on the <strong>Google Play Store</strong> under the Pumpy Labs developer account; Android Auto support is the next step."]
   ],
   "JSeeds: TBA": [
     ["The project", "TBA project developed in-house by JSeeds: a single-player TPS in Unreal Engine 5.7. I was one of the first designers to join the team, working closely with the Game Director from the earliest stages of production."],
@@ -889,13 +1067,14 @@ function insightFor(p, i) {
   return ins;
 }
 
-function buildGallery(gifs, labels, galleryVideo, galleryVideos) {
+function buildGallery(gifs, labels, galleryVideo, galleryVideos, galleryImages) {
   const gallery = document.getElementById('gif-gallery');
   const wrap = document.getElementById('gallery-wrap');
   gallery.innerHTML = '';
   const videos = galleryVideos || (galleryVideo ? [galleryVideo] : []);
   const realGifs = (gifs || []).filter(Boolean);
-  const total = videos.length + realGifs.length;
+  const images = galleryImages || [];
+  const total = videos.length + realGifs.length + images.length;
   wrap.classList.toggle('empty', total === 0);
   document.getElementById('gallery-hint').style.display = total > 1 ? '' : 'none';
 
@@ -903,6 +1082,12 @@ function buildGallery(gifs, labels, galleryVideo, galleryVideos) {
     const item = document.createElement('div');
     item.className = 'gif-video-item' + (total === 1 ? ' solo' : '');
     item.innerHTML = `<video autoplay loop muted playsinline preload="metadata"><source src="${v.src}" type="video/mp4"></video><div class="gif-video-label">${v.label}</div>`;
+    gallery.appendChild(item);
+  });
+  images.forEach(im => {
+    const item = document.createElement('div');
+    item.className = 'gif-item ' + (im.phone ? 'phone-shot' : 'wide-shot');
+    item.innerHTML = `<img loading="lazy" decoding="async" src="${im.src}" alt="${im.label || ''}">` + (im.label ? `<div class="gif-video-label">${im.label}</div>` : '');
     gallery.appendChild(item);
   });
   realGifs.forEach((src, i) => {
@@ -924,7 +1109,7 @@ function openModal(i, keepScroll) {
   document.getElementById('modal-kicker').textContent = p.kicker;
   document.getElementById('modal-title').innerHTML = p.titleHTML;
 
-  buildGallery(p.gifs, p.gifLabels, p.galleryVideo, p.galleryVideos);
+  buildGallery(p.gifs, p.gifLabels, p.galleryVideo, p.galleryVideos, p.galleryImages);
 
   document.getElementById('modal-insights').innerHTML = p.insights.map((_, idx) => insightFor(p, idx)).map(ins => {
     let content = `<div class="insight-text">${ins.text || ''}</div>`;
@@ -951,6 +1136,7 @@ function openModal(i, keepScroll) {
       <div class="meta-group"><span class="meta-label">Engine</span><span class="meta-value">${p.engine}</span></div>
       <div class="meta-group"><span class="meta-label">${t('year')}</span><span class="meta-value">${p.year}</span></div>
     </div>
+    ${p.link ? `<a class="meta-link" href="${p.link}" target="_blank" rel="noopener">${t('visit')} ↗</a>` : ''}
     ${!p.indie ? '<div class="meta-badge">' + t('pro') + '</div>' : ''}
   `;
 
