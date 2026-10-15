@@ -383,7 +383,9 @@
     font-size: 0.78rem; font-weight: 600; white-space: nowrap;
     transition: background 0.2s, color 0.2s;
   }
-  .qa-card:hover .qa-steam { background: var(--accent); color: #fff; }
+  .qa-card:hover .qa-steam, .card-steam:hover { background: var(--accent); color: #fff; }
+  .card-steam { text-decoration: none; color: var(--text); margin-left: auto; align-self: flex-end; }
+  .card-steam + .card-go { margin-left: 0; }
   .qa-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
   .qa-point { background: var(--surface); border-radius: var(--r-lg); padding: 18px 20px; box-shadow: var(--shadow-sm); }
   .qa-point b { display: block; font-size: 0.98rem; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 4px; }
@@ -667,6 +669,7 @@
             <h3 class="card-title">Hell Architect: Survivors</h3>
             <div class="card-detail">pub. Leonardo Interactive · Unity</div>
           </div>
+          <a class="qa-steam card-steam" href="https://store.steampowered.com/app/4128960/Hell_Architect_Survivors/" target="_blank" rel="noopener" onclick="event.stopPropagation()" aria-label="Hell Architect: Survivors su Steam">Steam ↗</a>
           <span class="card-go"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
         </div>
       </article>
@@ -891,6 +894,7 @@ const projects = [
     studio: "Trinity Team", genre: "Roguelite / Survivor",
     publisher: "Leonardo Interactive",
     engine: "Unity", year: "2025", indie: false,
+    link: "https://store.steampowered.com/app/4128960/Hell_Architect_Survivors/", linkKey: "visitSteam",
     // Sostituisci i null con i path delle tue gif: es. "hellarch_1.gif"
     gifs: [],
     gifLabels: [],
@@ -1018,7 +1022,7 @@ const projects = [
     img: "pumpy_desktop.webp",
     studio: "Pumpy Labs", genre: "App · Mobilità",
     engine: "Web · Python · Android", year: "2026", indie: true,
-    link: "https://pumpy.it",
+    link: "https://pumpy.it", linkKey: "visit",
     gifs: [], gifLabels: [],
     galleryImages: [
       { src: "pumpy_verdetto.webp", label: "Verdetto", phone: true },
@@ -1060,7 +1064,7 @@ const I18N = {
     secExp: "Esperienza in studio", secExpCount: "Unreal Engine 5 · Unity",
     secProduct: "Il mio prodotto", secProductCount: "Design · Sviluppo · Pubblicazione", secPersonal: "School & Jam Projects",
     pumpyDesc: "L'app che ti dice dove e quando fare il pieno: i prezzi di tutti i distributori d'Italia, aggiornati ogni giorno, con la tendenza della tua zona.",
-    pumpyOpen: "Scopri il progetto", visit: "Visita pumpy.it",
+    pumpyOpen: "Scopri il progetto", visit: "Visita pumpy.it", visitSteam: "Vedi su Steam",
     pathTitle: "Percorso", pathITS: "Game Programmer · 105/110",
     pathQA: "QA Tester freelance · Beatrix, Drag'N Dungeon, Lostbound",
     qaCount: "3 giochi · Tambù Digital",
@@ -1084,7 +1088,7 @@ const I18N = {
     secExp: "Studio experience", secExpCount: "Unreal Engine 5 · Unity",
     secProduct: "My product", secProductCount: "Design · Development · Launch", secPersonal: "School & Jam Projects",
     pumpyDesc: "The app that tells you where and when to fill up: prices for every fuel station in Italy, updated daily, with the trend in your area.",
-    pumpyOpen: "Explore the project", visit: "Visit pumpy.it",
+    pumpyOpen: "Explore the project", visit: "Visit pumpy.it", visitSteam: "View on Steam",
     pathTitle: "Background", pathITS: "Game Programmer · 105/110",
     pathQA: "Freelance QA Tester · Beatrix, Drag'N Dungeon, Lostbound",
     qaCount: "3 games · Tambù Digital",
@@ -1247,7 +1251,7 @@ function openModal(i, keepScroll) {
       <div class="meta-group"><span class="meta-label">Engine</span><span class="meta-value">${p.engine}</span></div>
       <div class="meta-group"><span class="meta-label">${t('year')}</span><span class="meta-value">${p.year}</span></div>
     </div>
-    ${p.link ? `<a class="meta-link" href="${p.link}" target="_blank" rel="noopener">${t('visit')} ↗</a>` : ''}
+    ${p.link ? `<a class="meta-link" href="${p.link}" target="_blank" rel="noopener">${t(p.linkKey || 'visit')} ↗</a>` : ''}
     ${!p.indie ? '<div class="meta-badge">' + t('pro') + '</div>' : ''}
   `;
 
